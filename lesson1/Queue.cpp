@@ -12,12 +12,22 @@ typedef struct QueueNode
     QDtaType data;
 } QNode;
 
-struct Queue
+typedef struct Queue
 {
-};
+    QNode *head;
+    QNode *tail;
+
+} Queue;
+void QueueInit(Queue *p);
+void QueueDestroy(Queue *p);
+
+void QueuePush(Queue *p, QDtaType x);
+void QueuePop(Queue *p);
+
 
 int main()
 {
+    Queue p;
 
     getchar();
     return 0;
