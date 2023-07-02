@@ -62,8 +62,9 @@ void QueuePush(Queue *p, QDataType x) //入队，尾插
     newnode->next = NULL;
     newnode->data = x;
 
-    if (p->head == NULL && p->tail == NULL) //若没有存放数据
+    if (p->head == NULL) //若没有存放数据
     {
+        assert(p->tail != NULL);
         p->head = p->tail = newnode;
     }
     else //尾插
@@ -76,13 +77,13 @@ void QueuePop(Queue *p) //出队，头删
 {
     assert(p);
     assert(!QueueEmpty(p)); //队列为空，不能头删
-    QNode *next = p->head->next;
+    /*QNode *next = p->head->next;
     free(p->head);
     p->head = next;
     if (next == NULL)
     {
         p->tail = NULL; //防止tail出现野指针的问题
-    }
+    }*/
     p->size--;
 }
 int Queuesize(Queue *p)
@@ -129,5 +130,6 @@ int main()
 
     QueueDestroy(&p);
     getchar();
+
     return 0;
 }
