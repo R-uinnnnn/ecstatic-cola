@@ -94,7 +94,7 @@ void Input(int a[Max][Max], int n)
         }
     }
 }
-
+/*
 int main()
 {
 
@@ -115,12 +115,11 @@ int main()
     printf("!");
     return 0;
 }
+*/
 
-/*
 int main()
 {
     cout << "好的好的" << endl;
     getchar();
     return 0;
 }
-*/
