@@ -116,10 +116,11 @@ int main()
     return 0;
 }
 */
-
+/*
 int main()
 {
     cout << "好的好的" << endl;
     getchar();
     return 0;
 }
+*/
