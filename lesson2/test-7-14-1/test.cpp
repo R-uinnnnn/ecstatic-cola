@@ -164,7 +164,7 @@ int main()
         Draw();
         Input();
         Logic();
-        Sleep(10);  // 小睡一会，以控制蛇的速度
+        Sleep(600);  
     }
     return 0;
 }
