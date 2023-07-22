@@ -147,14 +147,16 @@ MyStack* myStackCreate() {
 }
 
 void myStackPush(MyStack* obj, int x) {
-    Queue* empty=&obj->q1;
-    Queue* unempty=&obj->q2;
+
     if(!QueueEmpty(&obj->q1))
     {
-        empty=&obj->q2;
-        unempty=&obj->q1;
+        QueuePush(&obj->q1,x);
     }
-    QueuePush(unempty, x);
+    else
+    {
+        QueuePush(&obj->q2,x);
+    }
+    
   
 }
 
