@@ -80,11 +80,29 @@ void QueuePush(Queue* pq, QDataType x)//尾部入队
 void QueuePop(Queue* pq)//头部出队
 {
 	assert(pq);
-	assert(pq->size);
-	QNode* hnext = pq->head->next;
-	//free(pq->head);
-	pq->head = hnext;
-	pq->size--;
+	assert(pq->head!=NULL);
+    /*
+    QNode* hnext=pq->head->next;
+    free(pq->head);
+    pq->head=hnext;
+    if(pq->head==NULL)
+        pq->tail=pq->head;
+    */
+    //如果只有一个数据，尾指针会出现空指针的问题
+
+    if(pq->head->next==NULL)
+    {
+        assert(pq->tail->next==NULL);
+        free(pq->head);
+        pq->head=pq->tail=NULL;
+    }
+    else
+    {
+        QNode* hnext=pq->head->next;
+        free(pq->head);
+        pq->head=hnext; 
+    }
+    pq->size--;
 }
 
 int QueueSize(Queue* pq)
@@ -174,8 +192,8 @@ bool myStackEmpty(MyStack* obj) {
 }
 
 void myStackFree(MyStack* obj) {
-    free(&obj->q1);
-    free(&obj->q2);
+    QueueDestroy(&obj->q1);
+    QueueDestroy(&obj->q2);
     free(obj);
 }
 
