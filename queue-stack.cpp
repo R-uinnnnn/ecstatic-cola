@@ -168,12 +168,15 @@ int myStackPop(MyStack* obj) {
         empty=&obj->q2;
         unempty=&obj->q1;
     }
+    //倒数据
     while(QueueSize(unempty)>1)
     {
         QueuePush(empty, QueueFront(unempty));
         QueuePop(unempty);
     }
+    //取要删除数据
     int top=QueueFront(unempty);
+    //删除要删除的节点
     QueuePop(unempty);
     return top;
 }
