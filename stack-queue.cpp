@@ -128,8 +128,12 @@ int myQueuePop(MyQueue* obj) {
 int myQueuePeek(MyQueue* obj) {
     if(!Empty(&obj->pushst))
     {
-        Push(&obj->popst,StackTop(&obj->pushst));
-        Pop(&obj->pushst);
+        //倒数据
+        while(Size(&obj->pushst)>0)
+        {
+            Push(&obj->popst,StackTop(&obj->pushst));
+            Pop(&obj->pushst);
+        }
     }
     return StackTop(&obj->popst);
 
@@ -151,8 +155,8 @@ int main()
     MyQueue* obj=myQueueCreate();
     myQueuePush(obj,1);
     myQueuePush(obj,2);
-    printf("%d\n",myQueuePop(obj));
     printf("%d\n",myQueuePeek(obj));
+    printf("%d\n",myQueuePop(obj));
     printf("%d\n",myQueuePop(obj));
     getchar();
     return 0;
