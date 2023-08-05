@@ -21,10 +21,28 @@ void HeapInit(HP* heap)
     heap->size=0;
     heap->capacity=6;
 }
-
-void Adjustup(HPDateType* a,int child)
+void Tmp(int* a,int* b)
+{
+    int tmp=*a;
+    *a=*b;
+    *b=tmp;
+}
+void Adjustup(HPDateType* a,int child)//向上调整 大堆
 {
     int parent=(child-1)/2;
+    while(child>0)
+    {
+        if(a[parent]<a[child])
+        {
+            Tmp(&a[parent],&a[child]);
+            child=parent;
+            parent=(child-1)/2;
+        }
+        else//如果孩子<父亲，退出循环
+        {
+            break;
+        }
+    }
 }
 void HeapPush(HP* heap, HPDateType x)
 {
@@ -44,7 +62,28 @@ void HeapPush(HP* heap, HPDateType x)
     heap->size++;
 
 }
-
+int main()
+{
+    HP heap;
+    HeapInit(&heap);
+    HeapPush(&heap,7);
+    HeapPush(&heap,2);
+    HeapPush(&heap,6);
+    HeapPush(&heap,5);
+    HeapPush(&heap,0);
+    HeapPush(&heap,10);
+    HeapPush(&heap,3);
+    HeapPush(&heap,8);
+    HeapPush(&heap,20);
+    int i=0;
+    while(i<heap.size)
+    {
+        printf("%d ",heap.a[i]);
+        i++;
+    }
+    getchar();
+    return 0;
+}
 
 
 
