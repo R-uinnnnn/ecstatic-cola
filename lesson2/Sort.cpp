@@ -4,7 +4,9 @@
 //插入排序
 void InsertSort(int* a,int n)
 {
- 
+    int end=0;
+    int tmp;
+
 
 }
 
