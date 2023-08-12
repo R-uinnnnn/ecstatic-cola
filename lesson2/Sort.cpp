@@ -75,11 +75,11 @@ void PrintSort(int* a,int n)
 }
 int main()
 {
-    int a[5]={2,12,45,67,34};
-    PrintSort(a,5);
+    int a[10]={12,33,41,5,321,2,12,45,67,34};
+    PrintSort(a,10);
     //InsertSort(a,5);
-    ShellSort(a,5);
-    PrintSort(a,5);
+    ShellSort(a,10);
+    PrintSort(a,10);
     getchar();
     return 0;
 }
