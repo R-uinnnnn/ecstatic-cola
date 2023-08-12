@@ -23,8 +23,7 @@ void InsertSort(int* a,int n)
         {
             if(tmp<a[end])//如果插入元素tmp比前面数据大则交换,小的数据往前面流
             {
-                a[end+1]=a[end];
-                
+                a[end+1]=a[end]; 
             }
             else
             {
@@ -40,8 +39,31 @@ void InsertSort(int* a,int n)
 //希尔排序
 void ShellSort(int* a,int n)
 {
-    int gap=n/3+1;//gap是跳跃步数，随着循环变化而慢慢变化 
-    
+    int gap=n;
+    while(gap>1)
+    {
+        //gap=n/2;
+        gap=gap/3+1;//效率更高，gap表示跳跃步数
+                    //gap值要改变
+        for(int i=0;i<n-gap;i++)//多组一起比较
+        {
+            int end=i;
+            int tmp=a[end+gap];//end位置的下一个
+            while(end>=0)
+            {
+                if(tmp<a[end])
+                {
+                    a[end+gap]=a[end]; 
+                }
+                else
+                {
+                    break;
+                }
+                end-=gap;//前面数据是有序的
+            }
+            a[end+gap]=tmp;
+        }
+    }  
 }
 void PrintSort(int* a,int n)
 {
@@ -53,10 +75,11 @@ void PrintSort(int* a,int n)
 }
 int main()
 {
-    int a[15]={2,12,45,67,3,92,31,7,87,4,3,14,35,6};
-    PrintSort(a,15);
-    InsertSort(a,15);
-    PrintSort(a,15);
+    int a[5]={2,12,45,67,34};
+    PrintSort(a,5);
+    //InsertSort(a,5);
+    ShellSort(a,5);
+    PrintSort(a,5);
     getchar();
     return 0;
 }
