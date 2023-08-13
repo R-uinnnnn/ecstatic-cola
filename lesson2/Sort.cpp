@@ -12,7 +12,6 @@ void Swap(int* a,int* b)
 */
 //插入排序
 //升序排列
-
 void InsertSort(int* a,int n)
 {
     for(int i=0;i<n;i++)
@@ -72,6 +71,11 @@ void PrintSort(int* a,int n)
         printf("%d ",a[i]);
     }
     printf("\n");
+}
+void BublueSort(int* a,int n)
+{
+    
+
 }
 int main()
 {
