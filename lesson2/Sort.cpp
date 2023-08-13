@@ -72,16 +72,23 @@ void PrintSort(int* a,int n)
     }
     printf("\n");
 }
+//选择排序
+void ChoseSort(int* a,int n)
+{
+
+}
+//冒泡排序
 void BublueSort(int* a,int n)
 {
 
 
 }
+//快排
 void QuickSort(int* a,int n)
 {
 
 
-    
+
 }
 int main()
 {
