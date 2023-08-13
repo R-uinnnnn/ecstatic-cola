@@ -74,8 +74,14 @@ void PrintSort(int* a,int n)
 }
 void BublueSort(int* a,int n)
 {
-    
 
+
+}
+void QuickSort(int* a,int n)
+{
+
+
+    
 }
 int main()
 {
