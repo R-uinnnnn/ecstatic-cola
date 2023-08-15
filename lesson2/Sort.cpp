@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <malloc.h>
 
-/*
+
 void Swap(int* a,int* b)
 {
     int tmp=*a;
     *a=*b;
     *b=tmp;
 }
-*/
+
 //插入排序
 //升序排列
 void InsertSort(int* a,int n)
@@ -81,7 +81,21 @@ void SelectSort(int* a,int n)
      int min,max=left;
      while(left<right)
      {
-        if()
+        for(int i=left;i<right;i++)
+        {
+            if(a[i]<a[min])
+            {
+                min=i;
+            }
+            if(a[i]>a[max])
+            {
+                max=i
+            }
+        }
+        Swap(&a[min],&a[left]);
+        Swap(&a[max],&a[right]);
+        left++;
+        right--;
      }
 }
 //冒泡排序
@@ -99,11 +113,12 @@ void QuickSort(int* a,int n)
 }
 int main()
 {
-    int a[10]={12,33,41,5,321,2,12,45,67,34};
-    PrintSort(a,10);
+    int a[]={12,33,41,5,32,43,13,1,23,6456,12,87,345,321,91,39,54,68,58,1,2,12,45,67,34,10};
+    PrintSort(a,26);
     //InsertSort(a,5);
-    ShellSort(a,10);
-    PrintSort(a,10);
+    //hellSort(a,10);
+    SelectSort(a,26);
+    PrintSort(a,26);
     getchar();
     return 0;
 }
