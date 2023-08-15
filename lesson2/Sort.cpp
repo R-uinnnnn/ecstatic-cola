@@ -78,18 +78,20 @@ void SelectSort(int* a,int n)
     //走一趟选出最小和最大，分别放到最左边和左右边，再往下走知道left和right相遇
      int left=0;
      int right=n-1;
-     int min,max=left;
+     
      while(left<right)
      {
-        for(int i=left;i<right;i++)
+        int min=left;
+        int max=left;
+        for(int i=left;i<=right;i++)
         {
-            if(a[i]<a[min])
+            if(a[i]<a[min])//找到最小位置，并记录
             {
                 min=i;
             }
-            if(a[i]>a[max])
+            if(a[i]>a[max])//找到最大位置，并记录
             {
-                max=i
+                max=i;
             }
         }
         Swap(&a[min],&a[left]);
@@ -113,7 +115,7 @@ void QuickSort(int* a,int n)
 }
 int main()
 {
-    int a[]={12,33,41,5,32,43,13,1,23,6456,12,87,345,321,91,39,54,68,58,1,2,12,45,67,34,10};
+    int a[26]={12,33,41,5,32,43,13,1,23,6456,12,87,345,321,91,39,54,68,58,1,2,12,45,67,34,10};
     PrintSort(a,26);
     //InsertSort(a,5);
     //hellSort(a,10);
