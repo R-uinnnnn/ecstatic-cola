@@ -41,7 +41,7 @@ void ShellSort(int* a,int n)
     int gap=n;
     while(gap>1)
     {
-        //gap=n/2;
+        //gap=gap/2;
         gap=gap/3+1;//效率更高，gap表示跳跃步数
                     //gap值要改变
         for(int i=0;i<n-gap;i++)//多组一起比较
@@ -72,10 +72,17 @@ void PrintSort(int* a,int n)
     }
     printf("\n");
 }
-//选择排序
-void ChoseSort(int* a,int n)
+//选择排序 
+void SelectSort(int* a,int n)
 {
-
+    //走一趟选出最小和最大，分别放到最左边和左右边，再往下走知道left和right相遇
+     int left=0;
+     int right=n-1;
+     int min,max=left;
+     while(left<right)
+     {
+        if()
+     }
 }
 //冒泡排序
 void BublueSort(int* a,int n)
