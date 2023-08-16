@@ -103,8 +103,18 @@ void SelectSort(int* a,int n)
 //冒泡排序
 void BublueSort(int* a,int n)
 {
-
-
+    //将最大的数放到最后，通过两两比较
+    int i=0,j=0;
+    for(i=0;i<n;i++)
+    {
+        for(j=i+1;j<n-i;j++)
+        {
+            if(a[j-1]>a[j])
+            {
+                Swap(&a[j-1],&a[j]);
+            }
+        }
+    }
 }
 //快排
 void QuickSort(int* a,int n)
@@ -119,7 +129,8 @@ int main()
     PrintSort(a,26);
     //InsertSort(a,5);
     //hellSort(a,10);
-    SelectSort(a,26);
+    //SelectSort(a,26);
+    BublueSort(a,26);
     PrintSort(a,26);
     getchar();
     return 0;
