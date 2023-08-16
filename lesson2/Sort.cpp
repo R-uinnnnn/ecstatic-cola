@@ -103,11 +103,23 @@ void SelectSort(int* a,int n)
 //冒泡排序
 void BublueSort(int* a,int n)
 {
-    //将最大的数放到最后，通过两两比较
-    int i=0,j=0;
+    //通过两两比较，将最大的数放到最后
+    /*int i=0,j=0;
     for(i=0;i<n;i++)
     {
-        for(j=i+1;j<n-i;j++)
+        for(j=1;j<n-i;j++)
+        {
+            if(a[j-1]>a[j])
+            {
+                Swap(&a[j-1],&a[j]);
+            }
+        }
+    }*/
+    //通过两两比较，将最小数放到最前面
+    int i=0,j=0;
+    for(i=0;i<n;i++)//要走的趟数
+    {
+        for(j=i+1;j<n;j++)//
         {
             if(a[j-1]>a[j])
             {
