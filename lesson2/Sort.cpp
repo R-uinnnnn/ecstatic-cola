@@ -104,6 +104,8 @@ void SelectSort(int* a,int n)
 void BublueSort(int* a,int n)
 {
     //通过两两比较，将最大的数放到最后
+    //要从前往后走
+    /*
     int i=0,j=0;
     for(i=0;i<n-1;i++)
     {
@@ -115,12 +117,13 @@ void BublueSort(int* a,int n)
             }
         }
     }
+    */
     //通过两两比较，将最小数放到最前面
-    /*
+    //要从后往前走
     int i=0,j=0;
-    for(i=0;i<n;i++)//要走的趟数
+    for(i=0;i<n-1;i++)//要走的趟数
     {
-        for(j=i+1;j<n;j++)//
+        for(j=n-1;j>i;j--)
         {
             if(a[j-1]>a[j])
             {
@@ -128,7 +131,7 @@ void BublueSort(int* a,int n)
             }
         }
     }
-    */
+    
 }
 //快排
 void QuickSort(int* a,int n)
@@ -139,13 +142,13 @@ void QuickSort(int* a,int n)
 }
 int main()
 {
-    int a[26]={12,33,41,5,32,43,13,1,23,6456,12,87,345,321,91,39,54,68,58,1,2,12,45,67,34,10};
-    PrintSort(a,26);
+    int a[]={12,33,41,5,34,12,54,23,12,34,5,2,32};
+    PrintSort(a,13);
     //InsertSort(a,5);
     //hellSort(a,10);
     //SelectSort(a,26);
-    BublueSort(a,26);
-    PrintSort(a,26);
+    BublueSort(a,13);
+    PrintSort(a,13);
     getchar();
     return 0;
 }
