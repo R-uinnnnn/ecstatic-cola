@@ -104,8 +104,8 @@ void SelectSort(int* a,int n)
 void BublueSort(int* a,int n)
 {
     //通过两两比较，将最大的数放到最后
-    /*int i=0,j=0;
-    for(i=0;i<n;i++)
+    int i=0,j=0;
+    for(i=0;i<n-1;i++)
     {
         for(j=1;j<n-i;j++)
         {
@@ -114,8 +114,9 @@ void BublueSort(int* a,int n)
                 Swap(&a[j-1],&a[j]);
             }
         }
-    }*/
+    }
     //通过两两比较，将最小数放到最前面
+    /*
     int i=0,j=0;
     for(i=0;i<n;i++)//要走的趟数
     {
@@ -127,6 +128,7 @@ void BublueSort(int* a,int n)
             }
         }
     }
+    */
 }
 //快排
 void QuickSort(int* a,int n)
