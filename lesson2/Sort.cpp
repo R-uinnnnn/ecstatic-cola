@@ -101,6 +101,7 @@ void SelectSort(int* a,int n)
      }
 }
 //冒泡排序
+/*
 void BublueSort(int* a,int n)
 {
     //通过两两比较，将最大的数放到最后
@@ -120,6 +121,7 @@ void BublueSort(int* a,int n)
     */
     //通过两两比较，将最小数放到最前面
     //要从后往前走
+    /*
     int i=0,j=0;
     for(i=0;i<n-1;i++)//要走的趟数
     {
@@ -133,10 +135,38 @@ void BublueSort(int* a,int n)
     }
     
 }
-//快排
-void QuickSort(int* a,int n)
-{
+*/
 
+void BubbleSort(int* arr, int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        int flags = 1;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (arr[i] > arr[j])
+            {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                flags = 0;
+            }
+        }
+
+        if (flags)
+        {
+            break;
+        }
+    }
+}
+//快排
+//1、预排序（地柜手段）
+//2、                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+void QuickSort(int* a,int n)   
+{
+    int left;
+    int right;
+    int 
 
 
 }
@@ -147,7 +177,7 @@ int main()
     //InsertSort(a,5);
     //hellSort(a,10);
     //SelectSort(a,26);
-    BublueSort(a,13);
+    BubbleSort(a,13);
     PrintSort(a,13);
     getchar();
     return 0;
