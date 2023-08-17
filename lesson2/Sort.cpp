@@ -101,49 +101,34 @@ void SelectSort(int* a,int n)
      }
 }
 //冒泡排序
-/*
-void BublueSort(int* a,int n)
+void BubbleSort(int* a,int n)
 {
-    //通过两两比较，将最大的数放到最后
-    //要从前往后走
-    /*
-    int i=0,j=0;
-    for(i=0;i<n-1;i++)
+    for(int i=0;i<n-1;i++)//要走的躺数为n-1
     {
-        for(j=1;j<n-i;j++)
+        int flag=1;
+        for(int j=1;j<n-i;j++)
         {
             if(a[j-1]>a[j])
             {
                 Swap(&a[j-1],&a[j]);
+                flag=0;
             }
         }
-    }
-    */
-    //通过两两比较，将最小数放到最前面
-    //要从后往前走
-    /*
-    int i=0,j=0;
-    for(i=0;i<n-1;i++)//要走的趟数
-    {
-        for(j=n-1;j>i;j--)
+        if(flag)//走一趟，一次都未交换，说明已经有序，跳出循环，提高效率
         {
-            if(a[j-1]>a[j])
-            {
-                Swap(&a[j-1],&a[j]);
-            }
+            break;
         }
     }
-    
 }
-*/
-
+/*
 void BubbleSort(int* arr, int n)
 {
-    for (int i = 0; i < n - 1; i++)
+    for(int i = 0; i < n - 1; i++)
     {
         int flags = 1;
         for (int j = i + 1; j < n; j++)
         {
+            //从第一个位置开始存放数据，后面的位置与要存放数据位置的数据进行比较，将最小数据放到要存放的位置
             if (arr[i] > arr[j])
             {
                 int temp = arr[i];
@@ -158,15 +143,15 @@ void BubbleSort(int* arr, int n)
             break;
         }
     }
-}
+}*/
 //快排
-//1、预排序（地柜手段）
-//2、                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+//1、预排序（递归手段）
+//2、hoare版本  挖坑法  前后指针法                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 void QuickSort(int* a,int n)   
 {
     int left;
     int right;
-    int 
+
 
 
 }
