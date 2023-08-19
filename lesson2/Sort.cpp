@@ -148,6 +148,10 @@ void BubbleSort(int* arr, int n)
 //1、预排序（递归手段）
 //2、hoare版本  挖坑法  前后指针法 
 //void QuickSort(int* a,int n)   //其中要用到递归方法，所以如果给的参数是n，那么每次要计算左右两侧的元素个数，很麻烦                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+void QuickSort2(int* a,int left,int right)
+{
+    
+}
 void QuickSort(int* a,int left,int right)
 {
 
