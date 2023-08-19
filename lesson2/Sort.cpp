@@ -147,7 +147,8 @@ void BubbleSort(int* arr, int n)
 //快排
 //1、预排序（递归手段）
 //2、hoare版本  挖坑法  前后指针法 
-//void QuickSort(int* a,int n)   //其中要用到递归方法，所以如果给的参数是n，那么每次要计算左右两侧的元素个数，很麻烦                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+//void QuickSort(int* a,int n)   //其中要用到递归方法，所以如果给的参数是n，那么每次要计算左右两侧的元素个数，很麻烦   
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 int HoareSort(int*a,int left,int right)
 {
     int key=left;//取最左边值(首元素的值)为key值
@@ -159,12 +160,11 @@ int HoareSort(int*a,int left,int right)
         //右边先走-----能保证相遇位置一定比key位置的值小
         //why?----right先走，R找到了小，L找大未找到，L遇到R，相遇位置<key
         //right先走，R找到了小，L找到了大，L与R进行交换；R再次找小未找到，L遇到R，相遇位置<key
- 
-        if(left<right && a[right]>=a[key])//右边找小
+        while(left<right && a[right]>=a[key])//右边找小//条件判断为while循环，找到了才停止
         {
             right--;
         }
-        if(left<right && a[left]<=a[key])//左边找大
+        while(left<right && a[left]<=a[key])//左边找大
         {
             left++;
         }
@@ -188,6 +188,10 @@ void QuickSort(int* a,int left,int right)
 
 
 }
+
+
+
+
 int main()
 {
     int a[]={12,33,41,5,34,12,54,23,12,34,5,2,32};
