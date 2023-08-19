@@ -148,17 +148,8 @@ void BubbleSort(int* arr, int n)
 //1、预排序（递归手段）
 //2、hoare版本  挖坑法  前后指针法 
 //void QuickSort(int* a,int n)   //其中要用到递归方法，所以如果给的参数是n，那么每次要计算左右两侧的元素个数，很麻烦                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-void QuickSort2(int* a,int left,int right)
+int HoareSort(int*a,int left,int right)
 {
-    
-}
-void QuickSort(int* a,int left,int right)
-{
-
-    if(left>=right)//递归至数组不存在 或者 数组中只剩下一个元素的时候终止
-    {
-        return;
-    }
     int key=left;//取最左边值(首元素的值)为key值
     
     //left++;
@@ -180,7 +171,18 @@ void QuickSort(int* a,int left,int right)
         Swap(&a[left],&a[right]);
     }
     Swap(&a[left],&a[key]);
-    key=left;//交换之后key的位置变到了原本left的位置
+    return left;
+}
+
+void QuickSort(int* a,int left,int right)
+{
+
+    if(left>=right)//递归至数组不存在 或者 数组中只剩下一个元素的时候终止
+    {
+        return;
+    }
+
+    int key=HoareSort(a,left,right);//交换之后key的位置变到了原本left的位置
     QuickSort(a,left,key-1);
     QuickSort(a,key+1,right);
 
