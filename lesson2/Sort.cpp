@@ -173,7 +173,10 @@ int HoareSort(int*a,int left,int right)
     Swap(&a[left],&a[key]);
     return left;
 }
-
+int HoleSort(int* a,int left,int right)
+{
+       
+}
 void QuickSort(int* a,int left,int right)
 {
 
