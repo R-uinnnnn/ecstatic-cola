@@ -148,7 +148,7 @@ void BubbleSort(int* arr, int n)
 //1、预排序（递归手段）
 //2、hoare版本  挖坑法  前后指针法 
 //void QuickSort(int* a,int n)   //其中要用到递归方法，所以如果给的参数是n，那么每次要计算左右两侧的元素个数，很麻烦   
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+//hoare版本                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 int HoareSort(int*a,int left,int right)
 {
     int key=left;//取最左边值(首元素的值)为key值
@@ -173,10 +173,13 @@ int HoareSort(int*a,int left,int right)
     Swap(&a[left],&a[key]);
     return left;
 }
+//挖坑法
 int HoleSort(int* a,int left,int right)
 {
        
 }
+
+//
 void QuickSort(int* a,int left,int right)
 {
 
@@ -185,9 +188,9 @@ void QuickSort(int* a,int left,int right)
         return;
     }
 
-    int key=HoareSort(a,left,right);//交换之后key的位置变到了原本left的位置
-    QuickSort(a,left,key-1);
-    QuickSort(a,key+1,right);
+    int keyi=HoareSort(a,left,right);//交换之后key的位置变到了原本left的位置
+    QuickSort(a,left,keyi-1);
+    QuickSort(a,keyi+1,right);
 
 
 }
