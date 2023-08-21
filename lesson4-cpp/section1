@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int m=20;//全局变量
+//局部变量优先访问
+int main()
+{
+    int m=10;//局部变量
+    printf("%d ",m);
+    getchar();
+    return 0;
+}
+
+
