@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
+using namespace std;//输入输出流展开
 /*
 int m=20;//全局变量
 //局部变量优先访问
@@ -11,18 +13,18 @@ int main()
     return 0;
 }
 */
-struct Seqlist
+typedef struct Seqlist
 {
     int* a;
     int size;
     int capacity;
 
-};
+}Seqlist;
 int& getvalue(Seqlist* p,int pos)
 {
     return p->a[pos];
 }
-Seqlist SLInit()
+void SLInit(Seqlist* p)
 {
     p->a=(int*)malloc(sizeof(int)*10);
     p->size=0;
@@ -31,9 +33,10 @@ Seqlist SLInit()
 }
 int main()
 {
-    Seqlist p=SLInit();
+    Seqlist p;
+    SLInit(&p);
     int x=getvalue(1);
-
+    cout<<x<<endl;
 
     return 0;
 }
