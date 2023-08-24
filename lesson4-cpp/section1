@@ -22,16 +22,16 @@ int& getvalue(Seqlist* p,int pos)
 {
     return p->a[pos];
 }
-void SLInit(Seqlist* p)
+Seqlist SLInit()
 {
     p->a=(int*)malloc(sizeof(int)*10);
     p->size=0;
     p->capacity=10;
+    return p;
 }
 int main()
 {
-    Seqlist p;
-    SLInit(&p);
+    Seqlist p=SLInit();
     int x=getvalue(1);
 
 
