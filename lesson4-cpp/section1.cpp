@@ -30,18 +30,28 @@ void SLInit(Seqlist* p)
     p->size=0;
     p->capacity=10;
 }
+
+
 void SLPushBack(Seqlist* p,int x)
 {
     if(p->size==p->capacity)
     {
         p->a=(int*)realloc(p->a,sizeof(int)*p->size*2);
     }
-     
+    p->a[p->size]=x;
+    p->size++;
 }
 int main()
 {
     Seqlist p;
     SLInit(&p);
+    SLPushBack(&p,1);
+    SLPushBack(&p,2);
+    SLPushBack(&p,3);
+    SLPushBack(&p,4);
+    SLPushBack(&p,5);
+    SLPushBack(&p,6);
+    SLPushBack(&p,7);
     int x=getvalue(&p,1);
     cout<<x<<endl;
     int y=getvalue(&p,3);
