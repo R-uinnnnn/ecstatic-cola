@@ -29,14 +29,23 @@ void SLInit(Seqlist* p)
     p->a=(int*)malloc(sizeof(int)*10);
     p->size=0;
     p->capacity=10;
-    return p;
+}
+void SLPushBack(Seqlist* p,int x)
+{
+    if(p->size==p->capacity)
+    {
+        p->a=(int*)realloc(p->a,sizeof(int)*p->size*2);
+    }
+     
 }
 int main()
 {
     Seqlist p;
     SLInit(&p);
-    int x=getvalue(1);
+    int x=getvalue(&p,1);
     cout<<x<<endl;
-
+    int y=getvalue(&p,3);
+    cout<<y<<endl;
+    getchar();
     return 0;
 }
