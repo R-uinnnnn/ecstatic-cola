@@ -13,6 +13,9 @@ int main()
     return 0;
 }
 */
+#define Add(a,b) (((a)+(b))*10)
+
+
 typedef struct Seqlist
 {
     int* a;
