@@ -5,7 +5,7 @@ namespace A
 }
 
 //using namespace A;//展开命名空间
-//using A::a; n 
+using A::a; n 
 int main() 
 {
     int a=20;
