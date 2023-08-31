@@ -9,7 +9,7 @@ using A::a;
 int main() 
 {
     int a=20;
-    std::cout<< A::a << ": " << a << std::endl;
+    std::cout<< A::a << a << std::endl;
     getchar();
     return 0;
 }
