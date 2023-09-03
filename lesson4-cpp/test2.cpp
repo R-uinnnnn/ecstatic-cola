@@ -21,7 +21,7 @@ int main()
 {
     Data d1;
     Data d2;
-    cout<<d1._year<<endl;
+    cout<<d1._year<<d1._month<<d1._day<<endl;
     getchar();
     return 0;
 }
