@@ -24,7 +24,8 @@ private:
 };
 int main()
 {
-    Data d1(1,2,3);
+    Data d1(1);
+    Data d2;
     getchar();
     return 0;
 }
