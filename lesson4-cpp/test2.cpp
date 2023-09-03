@@ -10,13 +10,8 @@ public:
         _month=2;
         _day=2;
     }
-    Data(int year,int month=1,int day=1)
-    {
-        _year=year;
-        _month=month;
-        _day=day;
-    }
-private:
+
+//private:
     int _year;
     int _month;
     int _day;
@@ -24,8 +19,9 @@ private:
 };
 int main()
 {
-    Data d1(1);
+    Data d1;
     Data d2;
+    cout<<d1._year<<endl;
     getchar();
     return 0;
 }
