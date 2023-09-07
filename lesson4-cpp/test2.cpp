@@ -50,8 +50,7 @@ int main()
 {
     Data d1(1,1,1);
     Data d2(2,2,2);
-    d1=d2;
-    cout<<Add(d1,d2)<<endl;
+    d1=d2；
     cout<<d1._year<<d1._month<<d1._day<<endl;
     cout<<d2._year<<d2._month<<endl;
     getchar();
