@@ -10,28 +10,40 @@ using namespace std;
 //
 //	return 0;
 //}
+//void Print()
+//{
+//	cout << _year << _month << _day;
+//}
 class Date
 {
 public:
-	//Date(int year , int month = 9, int day = 9)
-	//{
-	//	_year = year;
-	//	_month = month;
-	//	_day = day;
-	//	cout <<"时间："<< year << "-" << month << "-" << day << endl;
-	//}
-	void Print()
+	Date(int year=2023 , int month = 9, int day = 9)//全缺省
 	{
-		cout << _year << _month << _day;
+		_year = year;
+		_month = month;
+		_day = day;
+		cout <<"时间："<< year << "-" << month << "-" << day << endl;
 	}
 private:
-	int _year=1;
-	int _month=2;
-	int _day=3;
+	int _year;
+	int _month;
+	int _day;
 };
+//int main()
+//{
+//	Date d1(2020);  //传参从左向右
+//	Date d2(2021, 1);
+//	Date d3(2022, 1, 1);
+//	return 0;
+//}
+
 int main()
 {
-	Date d1;
-	d1.Print();
+	int a = 10;
+	cout << &a << endl;
+	a = 20;
+	cout << &a << endl;
+	const int b = 30;
+	cout << &b << endl;
 	return 0;
 }
