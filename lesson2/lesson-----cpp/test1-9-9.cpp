@@ -22,7 +22,7 @@ public:
 		_year = year;
 		_month = month;
 		_day = day;
-		cout <<"Ê±¼ä£º"<< year << "-" << month << "-" << day << endl;
+		cout <<"Ê±ï¿½ä£º"<< year << "-" << month << "-" << day << endl;
 	}
 private:
 	int _year;
@@ -31,7 +31,7 @@ private:
 };
 //int main()
 //{
-//	Date d1(2020);  //´«²Î´Ó×óÏòÓÒ
+//	Date d1(2020);  //ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //	Date d2(2021, 1);
 //	Date d3(2022, 1, 1);
 //	return 0;
@@ -44,6 +44,6 @@ int main()
 	a = 20;
 	cout << &a << endl;
 	const int b = 30;
-	cout << &b << endl;
+	//cout << &b << endl;
 	return 0;
 }
