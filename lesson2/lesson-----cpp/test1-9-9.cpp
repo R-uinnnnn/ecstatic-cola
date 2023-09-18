@@ -44,6 +44,6 @@ int main()
 	a = 20;
 	cout << &a << endl;
 	const int b = 30;
-	//cout << &b << endl;
+	cout << &b << endl;
 	return 0;
 }
