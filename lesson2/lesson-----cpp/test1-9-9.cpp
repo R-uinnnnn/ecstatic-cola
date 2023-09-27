@@ -137,6 +137,7 @@ int main()
     return 0;
 }
 */
+/*
 #include <iostream>
 using namespace std;
 int Pow(int a,int n)//求a的n次方
@@ -161,8 +162,8 @@ int main() {
     do
     {
         ret=ret+mod*Pow(10,i);
+        mod=quo%n;
         quo=quo/n;
-        mod=mod%n;
         i++;
         sign=1;
     }while(quo);
@@ -172,6 +173,42 @@ int main() {
     }
     getchar();
     cout<<ret;
+    getchar();
+    return 0;
+}
+*/
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+bool is_palin(string m)
+{
+    string n=m;
+    reverse(n.begin(),n.end());
+    if(m==n)
+        return true;
+    else
+        return false;
+}
+int main()
+{
+    string a,b,c;
+    cin>>a>>b;
+    int sz=a.size();
+    int count=0;
+    for(int i=0;i<=sz;i++)
+    {
+        string d=a;
+        d.insert(i,b);  
+        cout<<d<<endl;
+        if(is_palin(d))
+        {
+            count++;
+        }
+    }
+    getchar();
+    cout<<count;
     getchar();
     return 0;
 }
