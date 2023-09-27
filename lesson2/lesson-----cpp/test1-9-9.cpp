@@ -97,6 +97,7 @@ int main() {
     a = nullptr;
 }
 */
+/*
 bool is_exist(char* a,char b[],int sz)
 {
     for(int i=0;i<sz;i++)
@@ -132,6 +133,45 @@ int main()
         i++;
     }
     printf("%s",a);
+    getchar();
+    return 0;
+}
+*/
+#include <iostream>
+using namespace std;
+int Pow(int a,int n)//求a的n次方
+{
+    int b=1;
+    if(n==0)
+        return 1;
+    for(int i=0;i<n;i++)
+    {
+        b*=a;
+    }
+    return b;
+}
+int main() {
+    int num,n;
+    cin>>num>>n;
+    int quo=num/n;//商
+    int ret=0;
+    int mod=num%n;
+    int i=0;
+    int sign=0;
+    do
+    {
+        ret=ret+mod*Pow(10,i);
+        quo=quo/n;
+        mod=mod%n;
+        i++;
+        sign=1;
+    }while(quo);
+    if(sign==1)
+    {
+        ret=ret+mod*Pow(10,i);
+    }
+    getchar();
+    cout<<ret;
     getchar();
     return 0;
 }
