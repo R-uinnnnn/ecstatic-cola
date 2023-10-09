@@ -97,7 +97,6 @@ int main()
     printf("%d ", StackTop(p));
     Pop(p);
     Push(p, 3);
-    Push(p, 6);
     printf("%d ", StackTop(p));
     Pop(p);
     Push(p, 8);
