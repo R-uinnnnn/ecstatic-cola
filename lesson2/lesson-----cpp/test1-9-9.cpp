@@ -215,7 +215,9 @@ using namespace std;
 
 int main()
 {
-    cout << '\0' << endl;
-    
+    string str1;
+    str1+="hello world";
+    cout<<str1<<endl;
+    getchar();
     return 0;
 }
