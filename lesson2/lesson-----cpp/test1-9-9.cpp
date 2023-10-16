@@ -218,8 +218,9 @@ int main()
     string str1;
     str1+="hello world";
     cout<<str1<<endl;
-    string s2("hhhh");
-    
+    string str2("xxxxxxxxxx");
+    str1.insert(5,str2);
+    cout<<str1<<endl;
     getchar();
     return 0;
 }
