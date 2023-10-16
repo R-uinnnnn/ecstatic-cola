@@ -218,6 +218,8 @@ int main()
     string str1;
     str1+="hello world";
     cout<<str1<<endl;
+    string s2("hhhh");
+    
     getchar();
     return 0;
 }
