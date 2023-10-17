@@ -213,14 +213,28 @@ using namespace std;
 //    return 0;
 //}
 
+//int main()
+//{
+//    string str1;
+//    str1+="hello world";
+//    cout<<str1<<endl;
+//    string str2("xxxxxxxxx");
+//    str1.insert(5,str2);
+//    cout<<str1<<endl;
+//    getchar();
+//    return 0;
+//}
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+#include "string.h"
+const char* c_str()
+{
+    return nullptr;
+}
 int main()
 {
-    string str1;
-    str1+="hello world";
-    cout<<str1<<endl;
-    string str2("xxxxxxxxx");
-    str1.insert(5,str2);
-    cout<<str1<<endl;
-    getchar();
+    cout << c_str() << endl;
+    cout << "vvvvvvvvvvvvvvvvvvvvv" << endl;
     return 0;
 }
