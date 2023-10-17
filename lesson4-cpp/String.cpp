@@ -5,8 +5,6 @@ using namespace std;
 
 int main()
 {
-    char* ptr=nullptr;
-    cout<<ptr<<endl;
-    getchar();
+
     return 0;
 }
