@@ -97,12 +97,34 @@ namespace STR
         }
         return *this;
     }
-    /*
+    string& operato+=(const char* s)
+    {
+        size_t len=strlen(s);
+        if(_size+len>_capacity)
+        {
+            //reserve(capacity*2);
+            reserve(_size+len);
+        }
+        _size+=len;
+        for(int i=0;i<len;i++)
+        {
+            _str[_size-len+i]=s[i];
+        }
+        _str[_size]='\0';
+    }
     string& append (const char* s)
     {
-
+        size_t len=strlen(s);
+        if(_size+len>_capacity)
+        {
+            //reserve(capacity*2);
+            reserve(_size+len);
+        }
+        _size+=len;
+        _str+=s;
+        return *this;
     }
-    */
+
     const char* c_str()
     {
         return _str;
