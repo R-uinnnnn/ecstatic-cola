@@ -28,5 +28,14 @@ namespace abl
         {
             return _str;
         }
+        char& operator[](size_t pos)
+        {
+            assert(pos<=_size);
+            return _str[pos];
+        }
+        size_t size()const
+        {
+            return _size;
+        }
     };
 }
