@@ -46,21 +46,60 @@ namespace STR
         _size=_capacity=0;
     }
     
-    char& operater[](size_t pos)//可以读和写
+    char& operator[](size_t pos)//可以读和写
     {
         assert(pos>=0&&pos<_size);
         return _str[pos];
     }
-    char& operater[](size_t pos)const//只能读
+    char& operator[](size_t pos)const//只能读
     {
         assert(pos>=0&&pos<_size);
         return _str[pos];
+    }
+    void reserve (size_t n = 0)
+    {
+        char* tmp=new char[n];//开辟新空间n
+        memcpy(tmp,_str);//将_str的数据拷贝到新空间
+        delete[] _str;//释放_str原有空间
+        _str=tmp;//将_str的指向改为tmp
+        _capacity=n;
     }
     void push_back(char c)
     {
-        
+        string newcapacity = _capacity==0 ? 6 : _capacity*2;
+        if(_size==_capacity)
+        {
+            reserve(newcapacity);
+        }
+        _capacity*=2;
+        iterator end=end();
+        *end=c;
+        *(end+1)='\0';
+        _size++;
     }
+    string& insert(size_t pos, size_t n, char c)
+    {
+        assert(pos<=_size);
+        if(_size+n>_capacity)
+        {
+            //reserve(capacity*2);
+            reserve(_size+n);
+        }
+        
+        size_t end=_size+n;//从'\0'位置往后n个位置
+        while(end>=pos+n)//如果从pos位置开始往后移动n个位置，就得写成end>=pos但当pos==0会出现问题，因为pos是size_t类型
+        {
+            _str[end]=_str[end-n];
+        }
+        for()
+        return *this;
+    }
+    /*
+    string& append (const char* s)
+    {
 
+    }
+    */
     const char* c_str()
     {
         return _str;
