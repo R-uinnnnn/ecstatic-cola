@@ -29,10 +29,11 @@ namespace STR
     {
 
     }*/
-    string(const char* str="")
+    
 //    :_str(new char[strlen(str)+1])
 //    ,_size(strlen(str))
 //    ,_capacity(strlen(str))
+    string(const char* str="")
     :_size(strlen(str))
     {
         _capacity=_size;
@@ -59,23 +60,22 @@ namespace STR
     void reserve (size_t n = 0)
     {
         char* tmp=new char[n];//开辟新空间n
-        memcpy(tmp,_str);//将_str的数据拷贝到新空间
+        strcpy(tmp,_str);//将_str的数据拷贝到新空间
         delete[] _str;//释放_str原有空间
         _str=tmp;//将_str的指向改为tmp
         _capacity=n;
     }
     void push_back(char c)
     {
-        string newcapacity = _capacity==0 ? 6 : _capacity*2;
+        size_t newcapacity = _capacity==0 ? 6 : _capacity*2;
         if(_size==_capacity)
         {
             reserve(newcapacity);
         }
         _capacity*=2;
-        iterator end=end();
-        *end=c;
-        *(end+1)='\0';
-        _size++;
+        _str[_size]=c;
+        ++_size;
+        _str[_size]='\0';
     }
     string& insert(size_t pos, size_t n, char c)
     {
@@ -85,13 +85,16 @@ namespace STR
             //reserve(capacity*2);
             reserve(_size+n);
         }
-        
+        _size+=n;
         size_t end=_size+n;//从'\0'位置往后n个位置
         while(end>=pos+n)//如果从pos位置开始往后移动n个位置，就得写成end>=pos但当pos==0会出现问题，因为pos是size_t类型
         {
             _str[end]=_str[end-n];
         }
-        for()
+        for(int i=pos;i<n;i++)
+        {
+            _str[i]=c;
+        }
         return *this;
     }
     /*
