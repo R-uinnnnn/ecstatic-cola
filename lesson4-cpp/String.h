@@ -52,18 +52,22 @@ namespace STR
         assert(pos>=0&&pos<_size);
         return _str[pos];
     }
-    char& operator[](size_t pos)const//只能读
+
+    const char& operator[](size_t pos)const//只能读
     {
         assert(pos>=0&&pos<_size);
         return _str[pos];
     }
     void reserve (size_t n = 0)
     {
+        if(n>capacity)
+        {
         char* tmp=new char[n];//开辟新空间n
         strcpy(tmp,_str);//将_str的数据拷贝到新空间
         delete[] _str;//释放_str原有空间
         _str=tmp;//将_str的指向改为tmp
         _capacity=n;
+        }
     }
     void push_back(char c)
     {
@@ -99,7 +103,7 @@ namespace STR
     }
     string& operato+=(const char* s)
     {
-        size_t len=strlen(s);
+        /*size_t len=strlen(s);
         if(_size+len>_capacity)
         {
             //reserve(capacity*2);
@@ -110,7 +114,10 @@ namespace STR
         {
             _str[_size-len+i]=s[i];
         }
-        _str[_size]='\0';
+        _str[_size]='\0';*/
+        append(s);
+        return *this;
+
     }
     string& append (const char* s)
     {
@@ -125,10 +132,11 @@ namespace STR
         return *this;
     }
 
-    const char* c_str()
+    const char* c_str()const
     {
         return _str;
     }
+
     private:
         size_t _size;
         size_t _capacity;
