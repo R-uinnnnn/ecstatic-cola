@@ -34,19 +34,23 @@ namespace STR
 //    ,_size(strlen(str))
 //    ,_capacity(strlen(str))
     string(const char* str="")
-    :_size(strlen(str))
     {
+        _size=strlen(str);
         _capacity=_size;
         _str=new char[_size+1];
         strcpy(_str,str);
     }
+
     ~string()
     {
         delete[] _str;
         _str=nullptr;
         _size=_capacity=0;
     }
-    
+    const char* c_str()const
+    {
+        return _str;
+    }
     char& operator[](size_t pos)//可以读和写
     {
         assert(pos>=0&&pos<_size);
@@ -101,6 +105,7 @@ namespace STR
         }
         return *this;
     }
+/*
     string& operato+=(const char* s)
     {
         /*size_t len=strlen(s);
@@ -119,6 +124,7 @@ namespace STR
         return *this;
 
     }
+
     string& append (const char* s)
     {
         size_t len=strlen(s);
@@ -131,11 +137,8 @@ namespace STR
         _str+=s;
         return *this;
     }
-
-    const char* c_str()const
-    {
-        return _str;
-    }
+*/
+    
 
     private:
         size_t _size;
