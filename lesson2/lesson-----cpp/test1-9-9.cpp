@@ -228,13 +228,13 @@ using namespace std;
 #include <stdio.h>
 using namespace std;
 #include "string.h"
-const char* c_str()
-{
-    return nullptr;
-}
-int main()
-{
-    cout << c_str() << endl;
-    cout << "vvvvvvvvvvvvvvvvvvvvv" << endl;
-    return 0;
-}
+//const char* c_str()
+//{
+//    return nullptr;
+//}
+//int main()
+//{
+//    cout << c_str() << endl;
+//    cout << "vvvvvvvvvvvvvvvvvvvvv" << endl;
+//    return 0;
+//}
