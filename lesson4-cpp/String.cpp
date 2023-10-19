@@ -1,29 +1,14 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
-#include "string.h"
-
+#include "string2.h"
+void test_string1();
+{
+    
+}
 int main()
 {
-    /*
-    std::string str1("jkdsajd");
-    std::string str2;
-    cout<<str1.c_str()<<endl;
-    cout<<str2.c_str()<<endl;
-    */
-    STR::string str3("hello world");
-    cout<<str3.c_str()<<endl;
-    STR::string::iterator it=str3.begin();
-    
-    while(it!=str3.end())
-    {
-        cout<<*it;
-        it++;
-    }
-    
-    //str3.insert(5,5,'%');
-    cout<<str3.c_str()<<endl;
-    cout<<str3[0]<<endl;
+    test_string1();
     getchar();
     return 0;
 }

@@ -1,3 +1,4 @@
+/*
 #include <assert.h>
 namespace STR
 {
@@ -64,7 +65,7 @@ namespace STR
     }
     void reserve (size_t n = 0)
     {
-        if(n>capacity)
+        if(n>_capacity)
         {
         char* tmp=new char[n];//开辟新空间n
         strcpy(tmp,_str);//将_str的数据拷贝到新空间
@@ -106,7 +107,7 @@ namespace STR
         return *this;
     }
 /*
-    string& operato+=(const char* s)
+    string& operator+=(const char* s)
     {
         /*size_t len=strlen(s);
         if(_size+len>_capacity)
@@ -146,3 +147,4 @@ namespace STR
         char* _str;
     };
 }
+*/
