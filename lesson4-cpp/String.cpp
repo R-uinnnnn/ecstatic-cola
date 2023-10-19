@@ -19,6 +19,7 @@ int main()
         cout<<*it;
         it++;
     }
+    cout<<str3.c_str()<<endl;
     str3.insert(5,5,'%');
     cout<<str3.c_str()<<endl;
     cout<<str3[0]<<endl;
