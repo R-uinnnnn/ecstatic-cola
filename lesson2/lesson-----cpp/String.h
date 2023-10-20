@@ -1,8 +1,8 @@
-#pragma
+#pragma once
 #include <assert.h>
-#include <string.h>
+#include <cstring>
 #include <iostream>
-#include<stdio.h>
+#include <stdio.h>
 //#include<string.h>
 void my_strcpy(char* dest, const char* src) {
 	while (*src != '\0') {
@@ -19,12 +19,31 @@ namespace abl
 		size_t _capacity;
 		char* _str;
 	public:
+		
+		typedef char* iterator;
+		typedef const char* const_iterator;
+		iterator begin()
+		{
+			return _str;//指向首元素
+		}
+		iterator end()
+		{
+			return _str + _size;//指向'\0'
+		}
+		const_iterator begin()const
+		{
+			return _str;
+		}
+		const_iterator end()const
+		{
+			return _str + _size;
+		}
 		string(const char* str = "")
 		{
 			_size = strlen(str);
 			_capacity = _size;
 			_str = new char[_size + 1];
-		    my_strcpy(_str, str);//完成初始化工作
+		    memcpy(_str, str,_size+1);//完成初始化工作
 		}
 		~string()
 		{
@@ -33,14 +52,79 @@ namespace abl
 			_size = _capacity = 0;
 			std::cout << "~string()" << std::endl;
 		}
-		//char& operator[](size_t pos)
-		//{
-		//	assert(pos <= _size);
-		//	return _str[pos];
-		//}
+		size_t size()const
+		{
+			return _size;
+		}
+		size_t capacity()const
+		{
+			return _capacity;
+		}
+		char& operator[](size_t pos)
+		{
+			assert(pos <= _size);
+			return _str[pos];
+		}
+		void reserve(size_t n = 0)
+		{
+			char* tmp = new char[n];//在堆区开辟空间，出函数不会销毁
+			memcpy(tmp, _str,n);
+			delete[] _str;
+			_str = tmp;
+			_capacity = n;
+		}
+		void push_back(char c)
+		{
+			if (_size == _capacity)
+			{
+				reserve(_capacity == 0 ? 6 : _capacity * 2);
+			}
+			_str[_size] = c;
+			_size++;
+			_str[_size] = '\0';
+		}
+		string& operator+= (char c)
+		{
+			push_back(c);
+			return *this;
+		}
+		string& operator+= (const char* s)
+		{
+			size_t len = strlen(s);
+			if (_size + len > _capacity)
+			{
+				reserve(_size + len+10);
+			}
+			append(s);
+			return *this;
+		}
+		string& append(const char* s)
+		{
+			size_t len = strlen(s);
+			if (_size + len > _capacity)
+			{
+				reserve(_size + len + 10);
+			}
+			my_strcpy(_str + _size, s);
+			return *this;
+		}
 		const char* c_str()const
 		{
 			return _str;
 		}
 	};
+}
+//std::ostream& operator<<(std::ostream& os, const abl::string& str)
+//{
+//	os << str._str << std::endl;
+//	return os;
+//}
+std::ostream& operator<<(std::ostream& os,const abl::string& str)
+{
+	for (auto ch : str)
+	{
+		os << str;
+	}
+
+	return os;
 }
