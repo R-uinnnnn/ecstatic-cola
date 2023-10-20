@@ -20,11 +20,11 @@ namespace abl
 		char* _str;
 	public:
 		string(const char* str = "")
-			:_size(strlen(str))
-			,_capacity(_size)
-			,_str(new char[_size+1])
 		{
-			my_strcpy(_str, str);//完成初始化工作
+			_size = strlen(str);
+			_capacity = _size;
+			_str = new char[_size + 1];
+		    my_strcpy(_str, str);//完成初始化工作
 		}
 		~string()
 		{
