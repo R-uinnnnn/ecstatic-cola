@@ -18,6 +18,7 @@ namespace abl
 		size_t _size;
 		size_t _capacity;
 		char* _str;
+		static size_t npos;
 	public:
 		
 		typedef char* iterator;
@@ -43,7 +44,7 @@ namespace abl
 			_size = strlen(str);
 			_capacity = _size;
 			_str = new char[_size + 1];
-		    memcpy(_str, str,_size+1);//完成初始化工作
+		    my_strcpy(_str, str);//完成初始化工作
 		}
 		~string()
 		{
@@ -68,7 +69,7 @@ namespace abl
 		void reserve(size_t n = 0)
 		{
 			char* tmp = new char[n];//在堆区开辟空间，出函数不会销毁
-			memcpy(tmp, _str,n);
+			my_strcpy(tmp, _str);
 			delete[] _str;
 			_str = tmp;
 			_capacity = n;
@@ -108,6 +109,35 @@ namespace abl
 			my_strcpy(_str + _size, s);
 			return *this;
 		}
+		string& insert(size_t pos, size_t n, char c)
+		{
+			assert(pos <= _size);
+			if (_size + n > _capacity)
+			{
+				reserve(_size + n);
+			}
+			size_t end = _size+n;
+			for (; end>=pos+n; end--)
+			{
+				_str[end] = _str[end-n];
+			}
+			for (size_t i = 0; i < n; i++)
+			{
+				_str[pos + i] = c;
+			}
+			_size += n;
+			return *this;
+
+		}
+		//string& insert(size_t pos, const char* s, size_t n)
+		//{
+
+		//}
+		//string& erase(size_t pos = 0, size_t len = npos)
+		//{
+
+		//}
+
 		const char* c_str()const
 		{
 			return _str;
@@ -119,12 +149,13 @@ namespace abl
 //	os << str._str << std::endl;
 //	return os;
 //}
-std::ostream& operator<<(std::ostream& os,const abl::string& str)
+size_t abl::string::npos = -1;//静态成员变量必须初始化，并且只能在类体外进行初始化
+std::ostream& operator<<(std::ostream& out,const abl::string& str)
 {
-	for (auto ch : str)
-	{
-		os << str;
-	}
-
-	return os;
+	//for (auto ch : str)
+	//{
+	//	out << str;
+	//
+	out << str.c_str();
+	return out;
 }

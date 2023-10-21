@@ -47,10 +47,14 @@ void test_string2()
     s3.append(" judy");
     cout << s3 << endl;
     string s4("helloooo");
-    s4 += '\0';
+    //s4 += '\0';
     cout << s4 << endl;
     s4 += "wwwwwww";
     cout << s4 << endl;
+    //abl::string s5("hello");
+    //s5.insert(2, 5, 'p');
+    //cout << s5 << endl;
+   /* cout << s4.npos << endl;*/
 }
 int main()
 {
