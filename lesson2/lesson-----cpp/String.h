@@ -68,7 +68,8 @@ namespace abl
 		}
 		void reserve(size_t n = 0)
 		{
-			char* tmp = new char[n];//在堆区开辟空间，出函数不会销毁
+			//多留出一个空位给\0
+			char* tmp = new char[n+1];//在堆区开辟空间，出函数不会销毁
 			my_strcpy(tmp, _str);
 			delete[] _str;
 			_str = tmp;
@@ -119,6 +120,7 @@ namespace abl
 			size_t end = _size+n;
 			for (; end>=pos+n; end--)
 			{
+				//abcd  size==4   pp  n==2  end==6  end-n==4
 				_str[end] = _str[end-n];
 			}
 			for (size_t i = 0; i < n; i++)
@@ -129,10 +131,27 @@ namespace abl
 			return *this;
 
 		}
-		//string& insert(size_t pos, const char* s, size_t n)
-		//{
-
-		//}
+		string& insert(size_t pos, const char* s, size_t n)
+		{
+			assert(pos <= _size);
+			size_t len = strlen(s);
+			if (_size + n > _capacity)
+			{
+				reserve(_size + n);
+			}
+			size_t end = _size + n;
+			for (; end >= pos + n; end--)
+			{
+				//abcd  size==4   pp  n==2  end==6  end-n==4
+				_str[end] = _str[end - n];
+			}
+			for (size_t i = 0; i < n; i++)
+			{
+				_str[pos + i] = s[i];
+			}
+			_size += n;
+			return *this;
+		}
 		//string& erase(size_t pos = 0, size_t len = npos)
 		//{
 
@@ -152,10 +171,11 @@ namespace abl
 size_t abl::string::npos = -1;//静态成员变量必须初始化，并且只能在类体外进行初始化
 std::ostream& operator<<(std::ostream& out,const abl::string& str)
 {
-	//for (auto ch : str)
-	//{
-	//	out << str;
-	//
-	out << str.c_str();
+	for (auto ch : str)
+	{
+		out << ch;
+	}
+	//out << str.c_str();
+	
 	return out;
 }
