@@ -67,7 +67,7 @@ namespace STR
     {
         if(n>_capacity)
         {
-        char* tmp=new char[n];//开辟新空间n
+        char* tmp=new char[n+1];//开辟新空间n,留一个给'\0'
         strcpy(tmp,_str);//将_str的数据拷贝到新空间
         delete[] _str;//释放_str原有空间
         _str=tmp;//将_str的指向改为tmp
@@ -105,6 +105,35 @@ namespace STR
             _str[i]=c;
         }
         return *this;
+    }
+    bool operator<(string& s)const
+    {
+        size_t i1=0,i2=0;//遍历两个字符串4
+        while(i1<=_size&&i2<=s._size)
+        {
+            if(_str[i1]<s._str[i2])
+            {
+                return true;
+            }
+            else if(_str[i1]>s._str[i2])
+            {
+                return false;
+            }
+            else
+            {
+                i1++;
+                i2++;
+            }
+        }
+        //若循环正常进行结束，可能出现的情况：
+        //hello hello     return false
+        //hellowwww hello return false
+        //hello hellowww  return true
+        if(_size<s._size)
+        {
+            return true;
+        }
+        return false;
     }
 /*
     string& operator+=(const char* s)
