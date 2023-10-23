@@ -10,6 +10,9 @@ void test_string1()
     {
         cout<<s1[i]<<" ";
     }
+    abl::string s2("hello");
+    abl::string s3("helloxxxx");
+    cout<<(s2<s3)<<endl;
 }
 int main()
 {

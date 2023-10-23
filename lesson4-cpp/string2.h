@@ -24,6 +24,7 @@ namespace abl
             _str=nullptr;
             _size=_capacity=0;
         }
+        
         const char* c_str()const
         {
             return _str;
