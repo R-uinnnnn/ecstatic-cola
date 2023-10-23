@@ -176,6 +176,6 @@ std::ostream& operator<<(std::ostream& out,const abl::string& str)
 		out << ch;
 	}
 	//out << str.c_str();
-	
 	return out;
 }
+std::istream& operator>>(std::istream& out, abl::string& str)
