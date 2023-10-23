@@ -156,7 +156,44 @@ namespace abl
 		//{
 
 		//}
-
+		bool operator<(string& s)const
+		{
+			size_t i1 = 0, i2 = 0;//遍历两个字符串4
+			while (i1 < _size && i2 < s._size)
+			{
+				if (_str[i1] < s._str[i2])
+				{
+					return true;
+				}
+				else if (_str[i1] > s._str[i2])
+				{
+					return false;
+				}
+				else
+				{
+					i1++;
+					i2++;
+				}
+			}
+			//若循环正常进行结束，可能出现的情况：
+			//hello hello     return false
+			//hellowwww hello return false
+			//hello hellowww  return true
+			if (_size < s._size)
+			{
+				return true;
+			}
+			return false;
+		}
+		bool operator==(string& s)const
+		{
+			//std::cout << s._size << std::endl;
+			if (_size != s._size)
+			{
+				return false;
+			}
+			return memcmp(_str, s._str, _size) == 0;
+		}
 		const char* c_str()const
 		{
 			return _str;
@@ -178,4 +215,7 @@ std::ostream& operator<<(std::ostream& out,const abl::string& str)
 	//out << str.c_str();
 	return out;
 }
-std::istream& operator>>(std::istream& out, abl::string& str)
+//std::istream& operator>>(std::istream& out, abl::string& str)
+//{
+//
+//}
