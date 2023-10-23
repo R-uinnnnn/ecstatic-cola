@@ -194,6 +194,10 @@ namespace abl
 			}
 			return memcmp(_str, s._str, _size) == 0;
 		}
+		bool operator>(string& s)const
+		{
+			return !((*this < s) || (*this == s));
+		}
 		const char* c_str()const
 		{
 			return _str;
