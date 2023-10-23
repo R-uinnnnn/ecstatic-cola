@@ -76,9 +76,11 @@ void test_string3()
     abl::string s2("helloxxxxx");
     //cout << (s2 < s1) << endl;
     abl::string s3("hello");
-    cout << (s1 == s2) << endl;
-    cout << (s1 == s3) << endl;
-    cout << (s2 == s3) << endl;
+    //cout << (s1 == s2) << endl;
+    //cout << (s1 == s3) << endl;
+    cout << (s2 > s3) << endl;
+    cout << (s1 > s2) << endl;
+    cout << (s1 > s3) << endl;
 }
 int main()
 {
