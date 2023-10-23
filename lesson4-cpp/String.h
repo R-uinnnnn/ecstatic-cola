@@ -149,12 +149,12 @@ namespace STR
         {
             _str[_size-len+i]=s[i];
         }
-        _str[_size]='\0';*/
+        _str[_size]='\0';
         append(s);
         return *this;
 
     }
-
+*/
     string& append (const char* s)
     {
         size_t len=strlen(s);
