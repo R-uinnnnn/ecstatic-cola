@@ -43,9 +43,9 @@ void test_string2()
     //cout << s2 << endl;
     //s2 += "good";
     //cout << s2 << endl;
-    //abl::string s3("hello");
-    //s3.append(" judy");
-    //cout << s3 << endl;
+    abl::string s3("hello");
+    s3.append(" judy");
+    cout << s3 << endl;
     //abl::string s4("helloooo");
     ////s4 += '\0';
     //cout << s4 << endl;
@@ -63,11 +63,11 @@ void test_string2()
     //}
     //cout << endl;
 
-    string s6;
-    cin >> s6;
-    cout << s6 << endl;
-    cin >> s6;
-    cout << s6;
+    //string s6;
+    //cin >> s6;
+    //cout << s6 << endl;
+    //cin >> s6;
+    //cout << s6;
    /* cout << s4.npos << endl;*/
 }
 void test_string3()
@@ -78,13 +78,26 @@ void test_string3()
     abl::string s3("hello");
     //cout << (s1 == s2) << endl;
     //cout << (s1 == s3) << endl;
-    cout << (s2 > s3) << endl;
-    cout << (s1 > s2) << endl;
-    cout << (s1 > s3) << endl;
+    cout << (s2 >= s3) << endl;
+    cout << (s1 >= s2) << endl;
+    cout << (s1 >= s3) << endl;
+}
+void test_string4()
+{
+    abl::string s1("helloxxxxxxxxxxx");
+    //abl::string s2;
+    //s2 = s1;
+    //cout << s1 << endl;
+    //cout << s2 << endl;
+    //s1.append(" world");
+    abl::string s2("worldxxx");
+    s1 = s2;
+    cout << s1 << endl;
+    cout << s2 << endl;
 }
 int main()
 {
-    test_string3();
+    test_string4();
     return 0;
 }
 
