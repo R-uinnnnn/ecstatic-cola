@@ -112,6 +112,7 @@ namespace abl
 			delete[] _str;
 			_str = tmp;
 			_capacity = n;
+			//只改变了capacity，没有改变size，size不变
 		}
 		void push_back(char c)
 		{
