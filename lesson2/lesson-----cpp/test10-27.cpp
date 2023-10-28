@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 
@@ -79,8 +80,8 @@ string addStrings(string num1, string num2)
         {
             n2 = 0;
         }
-        ch = n1 + n2;
-        num += (ch % 10 + carry + '0');
+        ch = n1 + n2+carry;
+        num += (ch % 10 + '0');
         if (carry == 1)
             carry = 0;
         if (ch / 10 == 1)
@@ -102,14 +103,33 @@ string addStrings(string num1, string num2)
     reverse(it1, it2);//传递迭代器区间前闭后开
     return num;
 }
+void reverseString(vector<char>& s) {
+    vector<char>::iterator it1 = s.begin();
+    vector<char>::iterator it2 = s.end();
+    reverse(it1, it2);
+    vector<char>::iterator it = s.begin();
+    while (it != s.end())
+    {
+        cout << *it;
+        if (it < s.end() - 1)
+            cout << ",";
+        ++it;
+    }
+}
 int main()
-{ 
+{
     //string s1 = "+2147483647";
     ////int n = StrToInt(s1);
     //cout << n << endl;
-    string s1 = "1234";
-    string s2 = "236";
+    string s1 = "9";
+    string s2 = "99";
     string s3 = addStrings(s1, s2);
     cout << s3 << endl;
+    //vector<char> s;
+    //string s4 = "hellowwww";
+    //size_t pos = 0;
+    //pos = s4.find('a');
+    //cout << pos << endl;
+    //cout << s4.npos << endl;
     return 0;
 }
