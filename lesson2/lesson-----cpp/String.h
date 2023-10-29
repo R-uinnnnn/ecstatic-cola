@@ -180,7 +180,7 @@ namespace abl
 				reserve(_size + n);
 			}
 			size_t end = _size + n;
-			for (; end >= pos + n; end--)
+			for (; end >= pos + n; end--)//当pos==0时，end>=pos恒成立，因为end为size_t类型，不可能是负数
 			{
 				//abcd  size==4   pp  n==2  end==6  end-n==4
 				_str[end] = _str[end - n];
