@@ -116,20 +116,67 @@ void reverseString(vector<char>& s) {
         ++it;
     }
 }
-int main()
-{
-    //string s1 = "+2147483647";
-    ////int n = StrToInt(s1);
-    //cout << n << endl;
-    string s1 = "9";
-    string s2 = "99";
-    string s3 = addStrings(s1, s2);
-    cout << s3 << endl;
-    //vector<char> s;
-    //string s4 = "hellowwww";
-    //size_t pos = 0;
-    //pos = s4.find('a');
-    //cout << pos << endl;
-    //cout << s4.npos << endl;
+//int main()
+//{
+//    //string s1 = "+2147483647";
+//    ////int n = StrToInt(s1);
+//    //cout << n << endl;
+//    string s1 = "9";
+//    string s2 = "99";
+//    string s3 = addStrings(s1, s2);
+//    cout << s3 << endl;
+//    //vector<char> s;
+//    //string s4 = "hellowwww";
+//    //size_t pos = 0;
+//    //pos = s4.find('a');
+//    //cout << pos << endl;
+//    //cout << s4.npos << endl;
+//    return 0;
+//}
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string s;
+    getline(cin, s);
+    int i = 0;
+    size_t pos = 0;
+    size_t flag = 0;
+    size_t count = 0;
+    while (s[i] != '\0')
+    {
+        size_t prepos = pos;
+        //if (pos == 0)
+        //    pos = s.find(' ', i);
+        //else
+            pos = s.find(' ', i);
+        if (pos == s.npos)
+        {
+            string s1 = s.substr(prepos+1, s.size() - prepos);
+            size_t x = s.size() - count - prepos + 1;
+            cout << x << endl;
+            break;
+        }
+        else
+        {
+            ++count;
+        }
+        i = (pos + 1);
+    }
     return 0;
+
 }
+
+//int main()
+//{
+//    string s1="hello string";
+//    size_t pos = 0;
+//    pos = s1.find(' ', 0);
+//    cout << pos << endl;
+//    pos = s1.find('a', pos + 1);
+//    cout << pos << endl;
+//
+//    return 0;
+//}
