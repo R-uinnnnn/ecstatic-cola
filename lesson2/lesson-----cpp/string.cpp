@@ -9,8 +9,8 @@ void test_string1()
     abl::string s2("legacy.cplusplus.com");
     string s3("jdksanxkdsd");
     string s4;
-    //cout << s3.c_str() << endl;
-    //cout << s4.c_str() << endl;
+    cout << s3.c_str() << endl;
+    cout << s4.c_str() << endl;
     cout << s1.c_str() << endl;
     for (size_t i = 0; i < s1.size(); i++)
     {
