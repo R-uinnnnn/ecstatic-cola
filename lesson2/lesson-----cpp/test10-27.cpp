@@ -138,58 +138,58 @@ void reverseString(vector<char>& s) {
 #include <string>
 using namespace std;
 
-int main() {
-    string s;
-    getline(cin, s);
-    int i = 0;
-    size_t pos = 0;
-    size_t flag = 0;
-    size_t count = 0;
-    while (s[i] != '\0')
-    {
-        size_t prepos = pos;
-        //if (pos == 0)
-        //    pos = s.find(' ', i);
-        //else
-            pos = s.find(' ', i);
-        if (pos == s.npos)
-        {
-            string s1 = s.substr(prepos+1, s.size() - prepos);
-            size_t x = s.size() - count - prepos + 1;
-            cout << x << endl;
-            break;
-        }
-        else
-        {
-            ++count;
-        }
-        i = (pos + 1);
-    }
-    return 0;
+//int main() {
+//    string s;
+//    getline(cin, s);
+//    int i = 0;
+//    size_t pos = 0;
+//    size_t flag = 0;
+//    size_t count = 0;
+//    while (s[i] != '\0')
+//    {
+//        size_t prepos = pos;
+//        //if (pos == 0)
+//        //    pos = s.find(' ', i);
+//        //else
+//            pos = s.find(' ', i);
+//        if (pos == s.npos)
+//        {
+//            string s1 = s.substr(prepos+1, s.size() - prepos);
+//            size_t x = s.size() - count - prepos + 1;
+//            cout << x << endl;
+//            break;
+//        }
+//        else
+//        {
+//            ++count;
+//        }
+//        i = (pos + 1);
+//    }
+//    return 0;
+//
+//}
 
+int main()
+{
+    string s1="hello string";
+    size_t pos = 0;
+    pos = s1.find(' ', 0);
+    cout << pos << endl;
+    pos = s1.find('a', pos + 1);
+    cout << pos << endl;
+
+    return 0;
 }
 
-//int main()
-//{
-//    string s1="hello string";
-//    size_t pos = 0;
-//    pos = s1.find(' ', 0);
-//    cout << pos << endl;
-//    pos = s1.find('a', pos + 1);
-//    cout << pos << endl;
-//
-//    return 0;
-//}
-
-//int singleNumber(vector<int>& nums) {
-//    int i = 0;
-//    int x = 0;
-//    while (i < nums.size())
-//    {
-//        x ^= nums[i++];
-//    }
-//    return x;
-//}
+int singleNumber(vector<int>& nums) {
+    size_t i = 0;
+    int x = 0;
+    while (i < nums.size())
+    {
+        x ^= nums[i++];
+    }
+    return x;
+}
 //int main()
 //{
 //    int a[10] = { 0,1,2,3,4,5,6,7,8,9 };
