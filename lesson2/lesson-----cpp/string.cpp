@@ -95,17 +95,17 @@ void test_string4()
     cout << s1 << endl;
     cout << s2 << endl;
 }
-//int main()
-//{
-//    //test_string4();
-//    string s("hello world");
-//    string::iterator it = s.begin();
-//    while (it != s.end())
-//    {
-//        *it = 'x';
-//        it++;
-//    }
-//    cout << s << endl;
-//    return 0;
-//}
+int main()
+{
+    //test_string4();
+    string s("hello world");
+    string::iterator it = s.begin();
+    while (it != s.end())
+    {
+        *it = 'x';
+        it++;
+    }
+    cout << s << endl;
+    return 0;
+}
 
