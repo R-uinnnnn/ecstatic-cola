@@ -169,27 +169,27 @@ using namespace std;
 //
 //}
 
-int main()
-{
-    string s1="hello string";
-    size_t pos = 0;
-    pos = s1.find(' ', 0);
-    cout << pos << endl;
-    pos = s1.find('a', pos + 1);
-    cout << pos << endl;
-
-    return 0;
-}
-
-int singleNumber(vector<int>& nums) {
-    size_t i = 0;
-    int x = 0;
-    while (i < nums.size())
-    {
-        x ^= nums[i++];
-    }
-    return x;
-}
+//int main()
+//{
+//    string s1="hello string";
+//    size_t pos = 0;
+//    pos = s1.find(' ', 0);
+//    cout << pos << endl;
+//    pos = s1.find('a', pos + 1);
+//    cout << pos << endl;
+//
+//    return 0;
+//}
+//
+//int singleNumber(vector<int>& nums) {
+//    size_t i = 0;
+//    int x = 0;
+//    while (i < nums.size())
+//    {
+//        x ^= nums[i++];
+//    }
+//    return x;
+//}
 //int main()
 //{
 //    int a[10] = { 0,1,2,3,4,5,6,7,8,9 };
@@ -197,3 +197,35 @@ int singleNumber(vector<int>& nums) {
 //
 //    return 0;
 //}
+#include <vector>
+#include <algorithm>
+int main()
+{
+    int a[6] = { 1,2,11,3,5,10 };
+    vector<int> v(a, a + 6);//相当于传参begin()和end()，end()指向最后一个元素的下一个
+    for (auto it : v)
+    {
+        cout << it << " ";//不用加解引用
+        it++;
+    }
+    cout << endl;
+    //for (auto& it : v)
+    //{
+    //    it++;//加引用实现范围for的修改
+    //}   
+    // 输出 
+    //for (auto it : v)
+    //{
+    //    cout << it << " ";//不用加解引用
+    //    it++;
+    //}
+    vector<int>::iterator it1=find(v.begin(), v.end(), v[0]);
+    //if (it1 != v.end())
+    //{
+    //    cout << *it1 << " ";
+    //    //it1 = find(it1+1, v.end(), v[1]);
+    //}
+    //cout << endl;
+    cout<<
+    return 0;
+}
