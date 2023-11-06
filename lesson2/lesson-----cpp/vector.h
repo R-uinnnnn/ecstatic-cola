@@ -1,6 +1,6 @@
 #pragma once
 
-
+using namespace std;
 namespace abl
 {
 	template<class T>
@@ -10,60 +10,121 @@ namespace abl
 			// Vector的迭代器是一个原生指针
 			typedef T* iterator;
 			typedef const T* const_iterator;
-			iterator begin()；
+			iterator begin()
+			{
+				return _start;
+			}
 
-			iterator end()；
+			iterator end()
+			{
+				return _end;
+			}
 
-			const_iterator cbegin()；
+			const_iterator cbegin()
+			{
+				return _start;
+			}
 
-			const_iterator cend() const；
+			const_iterator cend() const
+			{
+				return _end;
+			}
 			// construct and destroy
 
-			vector()；
+			vector()
+			{
+				_start = new T;
+				*_start = 1;
+				_end=_endofstorage = _start + 1;
 
-			vector(int n, const T& value = T())；
+			}
 
-			template<class InputIterator>
+			vector(int n, const T& value = T())
+			{
+				insert(n, value);
+			}
 
-			vector(InputIterator first, InputIterator last)；
+			//template<class InputIterator>
+			//vector(InputIterator first, InputIterator last)；
 
-			vector(const vector<T>& v)；
+			//vector(const vector<T>& v)；
 
-			vector<T>& operator= (vector<T> v)；
+			//vector<T>& operator= (vector<T> v)；
 
-			~vector()；
+			~vector()
+			{
+				if (_start != nullptr)//不为空，释放空间
+				{
+					delete[] _start;
+					_start = _end = _endofstorage = nullptr;
+				}
+
+			}
 			// capacity
+			size_t size()
+			{
+				return _end - _start;
+			}
+			size_t size() const
+			{
+				return _end - _start;
+			}
+			size_t capacity()
+			{
+				return _endofstorage - _start;
+			}
+			size_t capacity() const
+			{
+				return _endofstorage - _start;
+			}
 
-			size_t size() const ；
+			void reserve(size_t n)
+			{
+				if (n > capacity())
+				{
+					T* tmp = new T[n];
+					int sz = size();
+					for (int i = 0; i < size(); i++)
+					{
+						tmp[i] = _start[i];
+					}
+					delete _start;
+					_start = tmp;
+					//_end = _start + size();//会出现问题，因为_start已经改变，而_end没有变，因此_start+_end-_start=_end=0;
+					_end = _start + sz;
+					_endofstorage = _start + n;
+				}
 
-			size_t capacity() const；
+			}
 
-			void reserve(size_t n)；
+			//void resize(size_t n, const T& value = T())
+			//{
 
-			void resize(size_t n, const T& value = T())；
-		    ///////////////access///////////////////////////////
+			//}
+		 //   ///////////////access///////////////////////////////
 
-			T& operator[](size_t pos)；
+			//T& operator[](size_t pos)；
 
-			const T& operator[](size_t pos)const；
+			//const T& operator[](size_t pos)const；
 
 
 
 			///////////////modify/////////////////////////////
 
-			void push_back(const T& x)；
+			//void push_back(const T& x)；
 
-			void pop_back()；
+			//void pop_back()；
 
-			void swap(vector<T>& v)；
+			//void swap(vector<T>& v)；
 
-			iterator insert(iterator pos, const T& x)；
+			//iterator insert(iterator pos, const T& x)；
 
-			iterator erase(Iterator pos)；
+			//iterator erase(Iterator pos)；
 	private:
 		iterator _start = nullptr;//开始
-		iterator _finish = nullptr;//结尾
+		iterator _end = nullptr;//结尾
 		iterator _endofstorage = nullptr;//数据容量末尾
 
 	};
+
 }
