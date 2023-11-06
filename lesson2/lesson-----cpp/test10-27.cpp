@@ -199,6 +199,7 @@ using namespace std;
 //}
 #include <vector>
 #include <algorithm>
+/*
 int main()
 {
     int a[6] = { 1,2,11,3,5,10 };
@@ -226,6 +227,6 @@ int main()
     //    //it1 = find(it1+1, v.end(), v[1]);
     //}
     //cout << endl;
-    cout<<
     return 0;
 }
+*/
