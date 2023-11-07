@@ -82,12 +82,23 @@ namespace abl
 			std::swap(_capacity, tmp._capacity);
 		}
 		//现代写法
-		string& operator= (string& s)
+		//string& operator= (string& s)
+		//{
+		//	if (this != &s)
+		//	{
+		//		string tmp(s);//调用拷贝构造（深拷贝）
+		//		swap(tmp);
+		//	}
+		//	return *this;
+		//}
+		//
+		//s1=s2;调用operator=
+		// 参数string s调用拷贝构造相当于s(s2)吗
+		string& operator= (string s)//自定义类型调用拷贝构造
 		{
 			if (this != &s)
 			{
-				string tmp(s);//调用拷贝构造（深拷贝）
-				swap(tmp);
+				swap(s);
 			}
 			return *this;
 		}

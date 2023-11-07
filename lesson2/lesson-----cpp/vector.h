@@ -1,5 +1,5 @@
 #pragma once
-
+#include <assert.h>
 using namespace std;
 namespace abl
 {
@@ -33,9 +33,6 @@ namespace abl
 
 			vector()
 			{
-				_start = new T;
-				*_start = 1;
-				_end=_endofstorage = _start + 1;
 
 			}
 
@@ -97,29 +94,120 @@ namespace abl
 
 			}
 
-			//void resize(size_t n, const T& value = T())
-			//{
+			void resize(size_t n, const T& value = T())//n>capacity,既改变size又改变capacity；n<capacity，只改变size
+			{
+				if (n < capacity())
+				{
+					if (n < size())
+					{
+						_end = _start + n;
+					}
+					else
+					{
+						cout <<"size:"<< size() << endl;
+						cout << "capacity:" << capacity() << endl;
+						size_t sz = size();
+						for (size_t i = sz; i < n ; i++)
+						{
+							_start[i] = value;
+						}
+						_end = _start + n;
+					}
+				}
+				else
+				{
+					reserve(n);
+					//cout << "size:" << size() << endl;
+					//cout << "capacity:" << capacity() << endl;
+					size_t sz = size();
+					for (int i = sz; i < n ; i++)
+					{
+						_start[i] = value;
+					}
+					_end = _start + n;
+				}
 
-			//}
+								
+				
+			}
 		 //   ///////////////access///////////////////////////////
 
-			//T& operator[](size_t pos)；
+			T& operator[](size_t pos)
+			{
+				return _start[pos];
+			}
 
-			//const T& operator[](size_t pos)const；
+			const T& operator[](size_t pos)const
+			{
+				return _start[pos];
+			}
 
 
 
 			///////////////modify/////////////////////////////
 
-			//void push_back(const T& x)；
+			void push_back(const T& x)
+			{
+				if (capacity() > size())
+				{
+					_start[size()] = x;
+					++_end;
+				}
+				else
+				{
+					size_t newcapacity = capacity() == 0 ? 4 : capacity() * 2;
+					reserve(newcapacity);
+					_start[size()] = x;
+					++_end;
+				}
+			}
 
-			//void pop_back()；
+			void pop_back()
+			{
+				--_end;
+			}
 
-			//void swap(vector<T>& v)；
+			void swap(vector<T>& v)
+			{
+				std::swap(_start, v._start);
+				std::swap(_end, v._end);
+				std::swap(_endofstorage, v._endofstorage);
+			}
 
-			//iterator insert(iterator pos, const T& x)；
+			iterator insert(iterator pos, const T& x)
+			{
+				assert(pos >= _start && pos <= _end);//pos==_end相当于尾插
+				if (size() == capacity())//空间满了，需要扩容
+				{
+					size_t sz = _end - _start;
+					size_t newcapacity = capacity() == 0 ? 4 : capacity() * 2;
+					reserve(newcapacity);
+					pos = _start + sz;//可能出现迭代器失效的问题，pos可能指向原来空间
+				}
+				iterator it = _end;
+				while (it != pos)
+				{
+					*it = *(it - 1);
+					--it;
+				}
+				*pos = x;
+				++_end;
+				return pos;
+			}
 
-			//iterator erase(Iterator pos)；
+			iterator erase(iterator pos)
+			{
+				assert(pos >= _start && pos < _end);
+				iterator it = pos+1;
+				while (it != _end)
+				{
+					//*it = *(it + 1);
+					*(it - 1) = *it;
+					it++;
+				}
+				--_end;
+				return pos;
+			}
 	private:
 		iterator _start = nullptr;//开始
 		iterator _end = nullptr;//结尾
