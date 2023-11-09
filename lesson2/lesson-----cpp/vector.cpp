@@ -110,8 +110,8 @@ void test3()
 		cout << it << " ";
 	}
 }
-int main()
-{
-	test3();
-	return 0;
-}
+//int main()
+//{
+//	test3();
+//	return 0;
+//}
