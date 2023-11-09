@@ -117,13 +117,17 @@ namespace abl
 		}
 		void reserve(size_t n = 0)
 		{
-			//多留出一个空位给\0
-			char* tmp = new char[n+1];//在堆区开辟空间，出函数不会销毁
-			my_strcpy(tmp, _str);
-			delete[] _str;
-			_str = tmp;
-			_capacity = n;
-			//只改变了capacity，没有改变size，size不变
+			if (n > capacity())
+			{
+				//多留出一个空位给\0
+				char* tmp = new char[n + 1];//在堆区开辟空间，出函数不会销毁
+				my_strcpy(tmp, _str);
+				delete[] _str;
+				_str = tmp;
+				_capacity = n;
+				//只改变了capacity，没有改变size，size不变
+			}
+
 		}
 		void push_back(char c)
 		{
