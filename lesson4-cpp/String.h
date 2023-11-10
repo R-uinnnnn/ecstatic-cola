@@ -106,6 +106,7 @@ namespace STR
         }
         return *this;
     }
+    /*
     bool operator<(string& s)const
     {
         size_t i1=0,i2=0;//遍历两个字符串4
@@ -125,6 +126,7 @@ namespace STR
                 i2++;
             }
         }
+        */
         //若循环正常进行结束，可能出现的情况：
         //hello hello     return false
         //hellowwww hello return false
