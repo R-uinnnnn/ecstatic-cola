@@ -230,3 +230,11 @@ int main()
     return 0;
 }
 */
+//int main()
+//{
+//    string s1 = "helloworld";
+//    string s2 = "wwwwwwwww";
+//    s2 = s2 + 'a';
+//    cout << s2 << endl;
+//    return 0;
+//}
