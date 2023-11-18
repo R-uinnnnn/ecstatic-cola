@@ -1,6 +1,7 @@
 #pragma once
 #include <assert.h>
 using namespace std;
+/*
 namespace abl
 {
 	template<class T>
@@ -60,7 +61,7 @@ namespace abl
 		vector<T>& operator= (vector<T> v)
 		{
 			//vector<int> tmp(v);
-			swap(tmp);
+			swap(v);
 			return *this;
 		}
 
@@ -233,3 +234,4 @@ namespace abl
 	};
 
 }
+*/
