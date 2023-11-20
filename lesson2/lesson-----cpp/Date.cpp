@@ -44,7 +44,12 @@ public:
 	}
 
 
-
+	void swap(const Date& d)
+	{
+		_year = d._year;
+		_month = d._month;
+		_day = d._day;
+	}
 	// 赋值运算符重载
 
   // d2 = d3 -> d2.operator=(&d2, d3)
@@ -52,7 +57,7 @@ public:
 	Date& operator=(const Date& d)
 	{
 		Date tmp(d);
-		*this = tmp;
+		swap(tmp);
 		return *this;
 	}
 
@@ -71,8 +76,8 @@ public:
 
 	Date& operator+=(int day)
 	{
-		int ndays=GetMonthDay(_year, _month);
-		if (_day + day > ndays)
+		int ndays = GetMonthDay(_year, _month);
+		while (_day + day > ndays)//15+15=30>28
 		{
 			_month++;
 			if (_month > 12)
@@ -80,8 +85,11 @@ public:
 				_month = 1;
 				_year++;
 			}
+			day -= ndays;
+			ndays = GetMonthDay(_year, _month);
 		}
-		_day = _day + day - ndays;
+		_day += day;
+		return *this;
 
 	}
 
@@ -91,22 +99,27 @@ public:
 
 	Date operator+(int day)
 	{
-		Date d = *this;
-		int ndays = GetMonthDay(d._year,d. _month);
-		while(d._day + day > ndays)
-		{
-			d._month++;
-			if (d._month > 12)
-			{
-				d._month = 1;
-				d._year++;
-			}
-			day -= ndays;
-			ndays = GetMonthDay(d._year, d._month);
-		}
-		d._day += day;
-
+		Date d = *this;//用已存在的对象初始化一个不存在的对象，调用拷贝构造函数
+		//int ndays = GetMonthDay(d._year,d. _month);
+		//while(d._day + day > ndays)//15+15=30>28
+		//{
+		//	d._month++;
+		//	if (d._month > 12)
+		//	{
+		//		d._month = 1;
+		//		d._year++;
+		//	}
+		//	day -= ndays;
+		//	ndays = GetMonthDay(d._year, d._month);
+		//}
+		//d._day += day;
+		/*用拷贝构造（现代方式实现）
+		Date d(*this);
+		d+=day;
+		*/
+		d += day;
 		return d;
+
 	}
 
 
@@ -247,9 +260,11 @@ int main()
 	Date d2(2023, 11, 2);
 	Date d3 = d2;
 	Date d4 = d2 + 100;
-	//cout << d3 << endl;
-	//cout << d4 << endl;
-	Date d5 = d2 - 50;
+	cout << d3 << endl;
 	cout << d4 << endl;
+	Date d5;
+	d5 = d2 - 50;
+	cout<<d2 - 50<<endl;
+	cout << d5 << endl;
 	return 0;
 }
