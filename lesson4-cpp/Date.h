@@ -210,7 +210,7 @@ public:
     short month_tmp = day_tmp / 30;
     day_tmp %= 30;
 
-    printf("相差: %ld 天 == %d 个星期 == %d个月%d天 == %ld年%d个月%d天\n",
+    printf("Sub: %ld day == %d weeks == %d month %d day == %ld year%d month%d day\n",
            abs(day), abs(day / 7), abs(day / 30), abs(day % 30), abs(year_tmp),
            abs(month_tmp), abs(day_tmp));
   }
@@ -227,7 +227,7 @@ public:
     _day = d1._day;
   }
 
-  void Print() { printf("%ld年%d月%d日\n", _year, _month, _day); }
+  void Print() { printf("%ldyear %dmonth %dday \n", _year, _month, _day); }
 
 private:
   long long _year;
@@ -236,7 +236,7 @@ private:
 };
 
 std::ostream &operator<<(std::ostream &out, const Date &d) {
-  out << d._year << "年" << d._month << "月" << d._day << "日" << std::endl;
+  out << d._year << "year" << d._month << "month" << d._day << "day" << std::endl;
 
   return out;
 }
@@ -253,7 +253,7 @@ std::istream &operator>>(std::istream &in, Date &d) {
     d._month = month;
     d._day = day;
   } else {
-    std::cerr << "非法日期" << std::endl;
+    std::cerr << "illegal Date" << std::endl;
     assert(false);
   }
 
