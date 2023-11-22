@@ -19,8 +19,6 @@ public:
 		return ndays;
 	}
 
-
-
 	// 全缺省的构造函数
 
 	Date(int year = 1900, int month = 1, int day = 1)
@@ -93,30 +91,11 @@ public:
 
 	}
 
-
-
 	// 日期+天数
 
 	Date operator+(int day)
 	{
 		Date d = *this;//用已存在的对象初始化一个不存在的对象，调用拷贝构造函数
-		//int ndays = GetMonthDay(d._year,d. _month);
-		//while(d._day + day > ndays)//15+15=30>28
-		//{
-		//	d._month++;
-		//	if (d._month > 12)
-		//	{
-		//		d._month = 1;
-		//		d._year++;
-		//	}
-		//	day -= ndays;
-		//	ndays = GetMonthDay(d._year, d._month);
-		//}
-		//d._day += day;
-		/*用拷贝构造（现代方式实现）
-		Date d(*this);
-		d+=day;
-		*/
 		d += day;
 		return d;
 
@@ -126,44 +105,34 @@ public:
 
 	Date& operator-=(int day)
 	{
-		int ndays = GetMonthDay(_year, _month);
-		while (_day - day < 0)
+		
+		while (_day - day <= 0)//当_day==day时也要进入循环，不然就是4月0日类似的不合法日期
 		{
 			_month--;
+
 			if (_month < 1)
 			{
 				_month = 12;
 				_year--;
+				
 			}
+			int ndays = GetMonthDay(_year, _month);
+			//处理完月份之后，再映射出对应的天数；因为减法要使用前一个月来减
+			//cout << ndays << endl;
 			day -= ndays;
-			ndays = GetMonthDay(_year, _month);
 		}
 		_day -= day;
+		return *this;
 	}
 
 	// 日期-天数
 
 	Date operator-(int day)
 	{
-		Date d = *this;
-		//int ndays = GetMonthDay(d._year, d._month);
-		//while (d._day - day < 0)
-		//{
-		//	d._month--;
-		//	if (d._month <1 )
-		//	{
-		//		d._month = 12;
-		//		d._year--;
-		//	}
-		//	day -= ndays;
-		//	ndays = GetMonthDay(d._year, d._month);
-		//}
-		//d._day -= day;
+		Date d (*this);
 		d -= day;
 		return d;
 	}
-
-
 	// 前置++
 
 	Date& operator++()
@@ -171,8 +140,6 @@ public:
 		*this += 1;
 		return *this;
 	}
-
-
 
 	// 后置++
 
@@ -184,25 +151,26 @@ public:
 	}
 
 
+	// 前置--
+
+	Date& operator--()
+	{
+		*this -= 1;
+		return *this;
+	}
+
 
 	// 后置--
 
 	Date operator--(int)
 	{
-		*this -= 1;
-		return *this;
-	}
-
-
-
-	// 前置--
-
-	Date& operator--()
-	{
 		Date tmp(*this);
 		*this -= 1;
-		return *this;
+		return tmp;
 	}
+
+
+
 
 
 
@@ -289,25 +257,27 @@ ostream& operator<<(ostream& cout,const Date& d)
 	cout << d._year<<"-"<<d._month<<"-"<< d._day << endl;
 	return cout;
 }
-
+void test1()
+{
+	Date d1(2023, 11, 20);
+	Date d2(2023, 11, 20);
+	Date d3(2023, 11, 2);
+	//cout << (d1 - d2) << endl;
+	int sub1 = (d1++) - d3;//2023.11.20-2023.11.2
+	int sub2 = (++d2) - d3;//2023.11.21-2023.11.2
+	cout << sub1 << endl;
+	cout << sub2 << endl;
+	Date d4(2022, 10, 28);
+	Date d5(2022, 10, 28);
+	Date d6(2023, 7, 30);
+	int sub3 = (d4--) - d6;
+	int sub4 = (--d4) - d6;
+	cout << sub3 << endl;
+	cout << sub4 << endl;
+}
 int main()
 {
-	Date d1(2022,11,15);
-	Date d2(2023, 11, 2);
-	Date d6(2023, 11, 2);
-	//Date d3 = d2;
-	//Date d4 = d2 + 100;
-	//cout << d3 << endl;
-	//cout << d4 << endl;
-	//Date d5;
-	//d5 = d2 - 50;
-	//cout<<d2 - 50<<endl;
-	//cout << d5 << endl;
-	cout << (d1 > d2)<<endl;
-	cout << (d1 == d2) << endl;
-	cout << (d1 < d2) << endl;
-	cout << (d2 == d6) << endl;
-	int days = d6 - d1;
-	cout << days << endl;
+	test1();
+
 	return 0;
 }
