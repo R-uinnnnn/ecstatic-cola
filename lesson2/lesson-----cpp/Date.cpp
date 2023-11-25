@@ -27,9 +27,6 @@ public:
 		_month = month;
 		_day = day;
 	}
-
-
-
 	// ¿½±´¹¹Ôìº¯Êý
 
   // d2(d1)
