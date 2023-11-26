@@ -1,4 +1,4 @@
-/*
+
 #include <assert.h>
 namespace STR
 {
@@ -23,13 +23,13 @@ namespace STR
     {
         return _str+_size;
     }
-    /*string()  //这种写法是错误的,会使c_str()为nullptr,而库函数中对于空字符串的处理是输出空（但是内存中会存放'\0'）
+    string()  //这种写法是错误的,会使c_str()为nullptr,而库函数中对于空字符串的处理是输出空（但是内存中会存放'\0'）
     :_size(0)
     ,_capacity(0)
     ,_str(nullptr)
     {
 
-    }*/
+    }
     
 //    :_str(new char[strlen(str)+1])
 //    ,_size(strlen(str))
@@ -137,10 +137,10 @@ namespace STR
         }
         return false;
     }
-/*
+
     string& operator+=(const char* s)
     {
-        /*size_t len=strlen(s);
+        size_t len=strlen(s);
         if(_size+len>_capacity)
         {
             //reserve(capacity*2);
@@ -156,7 +156,7 @@ namespace STR
         return *this;
 
     }
-*/
+
     string& append (const char* s)
     {
         size_t len=strlen(s);
@@ -169,7 +169,7 @@ namespace STR
         _str+=s;
         return *this;
     }
-*/
+
     
 
     private:
@@ -178,4 +178,3 @@ namespace STR
         char* _str;
     };
 }
-*/
