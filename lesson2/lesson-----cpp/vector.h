@@ -1,7 +1,6 @@
 #pragma once
 #include <assert.h>
-using namespace std;
-/*
+#include <string>
 namespace abl
 {
 	template<class T>
@@ -37,34 +36,6 @@ namespace abl
 
 		}
 
-		vector(int n, const T& value = T())
-		{
-			insert(n, value);
-		}
-
-		//template<class InputIterator>
-		//vector(InputIterator first, InputIterator last)；
-
-		vector(const vector<T>& v)
-		{
-			//reserve(v.capacity());//其实不需要用reserve，因为不需要在新的空间拷贝*this原有数据
-			_start = new[v.capacity()];
-			for (size_t i = 0; i < size(); i++)
-			{
-				_start[i] = v._start[i];
-				//不能用memcpy(),因为如果是vector<string>会出现浅拷贝问题(导致析构两次)；而用赋值的话，会去调用string的赋值运算符重载函数，是深拷贝
-			}
-			_end = _start + v.size();
-			_endofstorage = _start + v.capacity();
-		}
-
-		vector<T>& operator= (vector<T> v)
-		{
-			//vector<int> tmp(v);
-			swap(v);
-			return *this;
-		}
-
 		~vector()
 		{
 			if (_start != nullptr)//不为空，释放空间
@@ -91,6 +62,43 @@ namespace abl
 		{
 			return _endofstorage - _start;
 		}
+
+		vector(int n, const T& value = T())
+		{
+			insert(n, value);
+		}
+
+		template<class InputIterator>
+		vector(InputIterator first, InputIterator last)
+		{
+			while (first != last)
+			{
+				push_back(*first);
+				++first;
+			}
+		}
+
+		vector(const vector<T>& v)
+		{
+			//reserve(v.capacity());//其实不需要用reserve，因为不需要在新的空间拷贝*this原有数据
+			T n = v.capacity();
+			_start = new T[n];
+			for (size_t i = 0; i < v.size(); i++)
+			{
+				_start[i] = v._start[i];
+				//不能用memcpy(),因为如果是vector<string>会出现浅拷贝问题(导致析构两次)；而用赋值的话，会去调用string的赋值运算符重载函数，是深拷贝
+			}
+			_end = _start + v.size();
+			_endofstorage = _start + v.capacity();
+		}
+
+		vector<T>& operator= (vector<T> v)
+		{
+			//vector<int> tmp(v);
+			swap(v);
+			return *this;
+		}
+
 
 		void reserve(size_t n)
 		{
@@ -144,9 +152,6 @@ namespace abl
 				}
 				_end = _start + n;
 			}
-
-
-
 		}
 		//   ///////////////access///////////////////////////////
 
@@ -234,4 +239,3 @@ namespace abl
 	};
 
 }
-*/
