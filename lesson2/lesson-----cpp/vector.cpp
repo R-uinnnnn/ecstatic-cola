@@ -1,9 +1,10 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include "vector.h"
-using namespace std;
 
+#include <algorithm>
+
+using namespace std;
+#include "vector.h"
 void test1()
 {
 
@@ -110,8 +111,18 @@ void test3()
 		cout << it << " ";
 	}
 }
-//int main()
-//{
-//	test3();
-//	return 0;
-//}
+void test4()
+{
+	int a[10] = { 1,2,3,4,5,6,7,8,9,10 };
+	vector<int> v1(a, a + 9);
+	for (auto it : v1)
+	{
+		cout << it << " ";
+	}
+	cout << endl;
+}
+int main()
+{
+	test4();
+	return 0;
+}

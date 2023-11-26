@@ -19,31 +19,31 @@ using namespace std;
 //	return 
 //}
 
-vector<string> to_exchange(vector<string>& v)
-{
-	int i = 0;
-	stack<string>
+//vector<string> to_exchange(vector<string>& v)
+//{
+//	int i = 0;
+//	stack<string>
+//
+//
+//}
 
-
-}
-
-int main()
-{
-	vector<string> v;
-	v.push_back("3");
-	v.push_back("+");
-	v.push_back("4");
-	v.push_back("*");
-	v.push_back("6");
-	v.push_back("-");
-	v.push_back("6");
-	v.push_back("/");
-	v.push_back("2");
-	vector<string> v2;
-	v2 = to_exchange(v);
-
-	return 0;
-}
+//int main()
+//{
+//	vector<string> v;
+//	v.push_back("3");
+//	v.push_back("+");
+//	v.push_back("4");
+//	v.push_back("*");
+//	v.push_back("6");
+//	v.push_back("-");
+//	v.push_back("6");
+//	v.push_back("/");
+//	v.push_back("2");
+//	vector<string> v2;
+//	v2 = to_exchange(v);
+//
+//	return 0;
+//}
 
 
 
