@@ -19,6 +19,7 @@ public:
     } else {
       if (day < 1 || day > GetMonthDay(year, month)) {
         std::cerr << "非法输入!, 天数不合法, day: " << day << std::endl;
+        getchar();
         exit(1);
       }
     }
