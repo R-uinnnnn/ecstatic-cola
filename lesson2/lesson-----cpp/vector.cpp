@@ -55,7 +55,7 @@ void test2()
 	v1.push_back(5);
 	cout << v1.size() << endl;
 	cout << v1.capacity() << endl;
-	//v1.reserve(2);//ÐÞ¸ÄÈÝÁ¿<Ô­ÓÐÈÝÁ¿£¬ÈÝÁ¿²»±ä
+	//v1.reserve(2);//ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½<Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	//cout << v1.size() << endl;
 	//cout << v1.capacity() << endl;
 	//v1.reserve(20);
@@ -114,7 +114,7 @@ void test3()
 void test4()
 {
 	int a[10] = { 1,2,3,4,5,6,7,8,9,10 };
-	vector<int> v1(a, a + 10);//·¶Î§ÊÇÇ°±Õºó¿ª£¬[a,a+10£©
+	vector<int> v1(a, a + 10);//ï¿½ï¿½Î§ï¿½ï¿½Ç°ï¿½Õºó¿ª£ï¿½[a,a+10ï¿½ï¿½
 	for (auto it : v1)
 	{
 		cout << it << " ";
@@ -124,5 +124,6 @@ void test4()
 int main()
 {
 	test4();
+	getchar();
 	return 0;
 }
