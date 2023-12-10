@@ -6,6 +6,7 @@ using namespace std;
 
 int main()
 {
+    /*
     list<int> lt1;
     lt1.push_back(1);
     lt1.push_back(2);
@@ -20,6 +21,8 @@ int main()
         cout<<*it<<endl;
         ++it;
     }
+    */
+    annn::test1();
     getchar();
     return 0;
 }
