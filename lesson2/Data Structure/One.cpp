@@ -2,7 +2,7 @@
 
 using namespace std;
 //#include "Vector_level.h"
-#include "List_level.h"
+
 
 //int main()
 //{
@@ -21,15 +21,15 @@ using namespace std;
 
 
 
-int main()
-{
-    List<int> b;
-    int a[10] = { 1,2,3,9,5,6,7,8,9,0 };
-    for (int i = 0; i < 10; i++)
-    {
-        b.Push_back(a[i]);
-    }
-    int num = b.RemoveMin();
-    cout << num << endl;
-    return 0;
-}
+//int main()
+//{
+//    List<int> b;
+//    int a[10] = { 1,2,3,9,5,6,7,8,9,0 };
+//    for (int i = 0; i < 10; i++)
+//    {
+//        b.Push_back(a[i]);
+//    }
+//    int num = b.RemoveMin();
+//    cout << num << endl;
+//    return 0;
+//}
