@@ -1,42 +1,24 @@
 #pragma once
-
+#include <iostream>
+#include <list>
+#include <algorithm>
+using namespace std;
 namespace annn
 {
 
     template <class T>
-    struct Node//Ä¬ÈÏÊÇ¹«ÓÐ£¬¿ÉÒÔ·ÃÎÊ
+    struct Node//Ä¬ï¿½ï¿½ï¿½Ç¹ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½ï¿½
     {
         Node<T>* next;
-        //NodeÊÇÀàÃû£¬¶ø²»ÊÇÀàÐÍ£¬²»ÄÜÍü¼ÇÄ£°åÊµÀý»¯£¬ÒªÐ´ÉÏ²ÎÊý<T>
+        //Nodeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ´ï¿½Ï²ï¿½ï¿½ï¿½<T>
         Node<T>* prev;
         T _data;
-
         Node(const T& data=T())
             :next(nullptr),
             prev(nullptr),
-            _data(data)
-        {
-
-        }
-        void swap(const Node<T>& pNode)
-        {
-            std::swap(next, pNode.next);
-            std::swap(prev, pNode.prev);
-            std::swap(_data, pNode.data);
+            _data(data){
         }
 
-        Node(const Node<T>& pNode)
-        {
-            Node<T> tmp;
-            tmp.Node<T>(pNode._data);
-            swap(tmp);
-        }
-
-        Node<T>* operator=(Node<T>* pNode)
-        {
-            swap(pNode);
-            return *this;
-        }
     };
 
 
@@ -48,7 +30,7 @@ namespace annn
         Node<T>* node;
         //typedef T& ref;
         //typedef T* ptr;
-    //ÕâÖÖÇé¿ö¾Í¿ÉÒÔÖ»´«Ò»¸ö²ÎÊý£¬Èçlist_iterator<int>
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½list_iterator<int>
         typedef List_iterator<T, T&, T*> iterator;
         typedef List_iterator<T, const T&, const T*> const_iterator;
         typedef List_iterator<T, ref, ptr> self;
@@ -90,13 +72,13 @@ namespace annn
 
         dst operator++()
         {
-            node = node->next;//¿Õ¼ä²»Á¬Ðø£¬Òò´ËÃ¿++Ò»´Î£¬¾Í×ßµ½ÏÂÒ»¸ö½Úµã
+            node = node->next;//ï¿½Õ¼ä²»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿++Ò»ï¿½Î£ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½
             return *this;
         }
         self operator++(T)
         {
             List_iterator tmp(*this);
-            node = node->next;//¿Õ¼ä²»Á¬Ðø£¬Òò´ËÃ¿++Ò»´Î£¬¾Í×ßµ½ÏÂÒ»¸ö½Úµã
+            node = node->next;//ï¿½Õ¼ä²»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿++Ò»ï¿½Î£ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½
             return tmp;
         }
         dst operator--()
@@ -115,11 +97,12 @@ namespace annn
             return node != it.node;
         }
        
-        
+        bool operator==(iterator it)
+        {
+            return node == it.node;
+        }
+
     };
-
-
-  
 
     template <class T>
     class List
@@ -131,14 +114,32 @@ namespace annn
         typedef List_iterator<T, const T&, const T*> const_iterator;
         List()
         {
-            node = new Node<T>;//Ö»ÓÐ´øÉÏ²ÎÊý£¬Ä£°åÊµÀý»¯ÁË²ÅÊÇÀàÐÍ£»Node<T>²ÅÊÇÀàÐÍ£¬NodeÖ»ÊÇÀàÃû
+            node = new Node<T>;//Ö»ï¿½Ð´ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ë²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½Node<T>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½NodeÖ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             node->next = node;
             node->prev = node;
-            //½¨Á¢Í·½áµã(ÉÚ±øÎÀ)
+            //ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½(ï¿½Ú±ï¿½ï¿½ï¿½)
         }
         ~List()
         {
-            //ÊµÏÖ
+            //Êµï¿½ï¿½
+        }
+
+        List(const List<T>& lt)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        {
+            iterator it = lt.begin();
+            while (it != lt.end())
+            {
+                push_back(*it);
+                ++it;
+            }
+
+        }
+        List<T>& operator=(const list<T> it)
+        {
+            //List<T> tmp(it);
+            /*swap(tmp);*/
+            node = it.node;
+            return *this;
         }
         iterator begin()
         {
@@ -147,6 +148,14 @@ namespace annn
         iterator end()
         {
             return iterator(node);
+        }
+        const_iterator begin()
+        {
+            return const_iterator(node->next);
+        }
+        const_iterator end()
+        {
+            return const_iterator(node);
         }
         void push_back(T val)
         {
@@ -176,10 +185,10 @@ namespace annn
 //namespace annn
 //{
 //    template <class T>
-//    struct Node//Ä¬ÈÏÊÇ¹«ÓÐ£¬¿ÉÒÔ·ÃÎÊ
+//    struct Node//Ä¬ï¿½ï¿½ï¿½Ç¹ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½ï¿½
 //    {
 //        Node<T>* next;
-//        //NodeÊÇÀàÃû£¬¶ø²»ÊÇÀàÐÍ£¬²»ÄÜÍü¼ÇÄ£°åÊµÀý»¯£¬ÒªÐ´ÉÏ²ÎÊý<T>
+//        //Nodeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ´ï¿½Ï²ï¿½ï¿½ï¿½<T>
 //        Node<T>* prev;
 //        T _data;
 //        Node(const T& data = T())
@@ -200,7 +209,7 @@ namespace annn
 //    {
 //        //typedef T& ref;
 //        //typedef T* ptr;
-//    //ÕâÖÖÇé¿ö¾Í¿ÉÒÔÖ»´«Ò»¸ö²ÎÊý£¬Èçlist_iterator<int>
+//    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½list_iterator<int>
 //        typedef List_iterator<T, ref, ptr> iterator;
 //        typedef List_iterator<T, const ref, const ptr> const_iterator;
 //        typedef List_iterator<T, ref, ptr> self;
@@ -274,14 +283,14 @@ namespace annn
 //        typedef List_iterator<T, const ref, const ptr> const_iterator;
 //        List()
 //        {
-//            node = new Node<T>();//Ö»ÓÐ´øÉÏ²ÎÊý£¬Ä£°åÊµÀý»¯ÁË²ÅÊÇÀàÐÍ£»Node<T>²ÅÊÇÀàÐÍ£¬NodeÖ»ÊÇÀàÃû
+//            node = new Node<T>();//Ö»ï¿½Ð´ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ë²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½Node<T>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½NodeÖ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //            node->next = node;
 //            node->prev = node;
-//            //½¨Á¢Í·½áµã(ÉÚ±øÎÀ)
+//            //ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½(ï¿½Ú±ï¿½ï¿½ï¿½)
 //        }
 //        ~List()
 //        {
-//            //ÊµÏÖ
+//            //Êµï¿½ï¿½
 //        }
 //        iterator begin()
 //        {
