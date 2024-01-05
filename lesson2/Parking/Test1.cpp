@@ -1,122 +1,432 @@
 #include <iostream>
 #include <stack>
 #include <queue>
-#include <string>
-#include <ctime>
+
+using namespace std;
+/*
+class Time {
+public:
+    int hours;
+    int minutes;
+    int seconds;
+    Time()
+    {
+    }
+    Time(int h, int m, int s) : hours(h), minutes(m), seconds(s) {}
+
+    friend ostream& operator<<(ostream& out, const Time& time) {
+        out << time.hours << "Ê±" << time.minutes << "·Ö" << time.seconds << "Ãë";
+        return out;
+    }
+};
+
+class Car {
+public:
+    string license_plate;
+    Time arrival_time;
+    Time departure_time;
+
+    Car(string plate, const Time& arrival) : license_plate(plate), arrival_time(arrival) {}
+};
+
+class ParkingLot {
+private:
+    int capacity;
+    stack<Car> in_stack;
+    stack<Car> temp_stack; // ÓÃÓÚ¸øÒªÀëÈ¥µÄÆû³µÈÃÂ·µÄÁÙÊ±Õ»
+    queue<Car> waiting_queue;
+
+public:
+    ParkingLot(int n) : capacity(n) {}
+
+    // ³µÁ¾µ½´ï
+    void arrive(string plate, const Time& arrival_time) {
+        Car new_car(plate, arrival_time);
+
+        if (in_stack.size() < capacity) {
+            in_stack.push(new_car);
+            cout << "³µÅÆºÅ " << plate << " µÄ³µÁ¾ÔÚÍ£³µ³¡ÄÚµÄÎ»ÖÃÎª " << in_stack.size() << endl;
+        }
+        else {
+            waiting_queue.push(new_car);
+            cout << "³µÅÆºÅ " << plate << " µÄ³µÁ¾ÔÚ±ãµÀÉÏµÈ´ý" << endl;
+        }
+    }
+
+    // ³µÁ¾ÀëÈ¥
+    void depart(const Time& departure_time) {
+        while (!in_stack.empty()) {
+            Car current_car = in_stack.top();
+            in_stack.pop();
+            temp_stack.push(current_car);
+
+            if (current_car.departure_time.hours == 0 &&
+                current_car.departure_time.minutes == 0 &&
+                current_car.departure_time.seconds == 0) {
+                current_car.departure_time = departure_time;
+                calculateAndPrintFee(current_car);
+            }
+        }
+
+        while (!temp_stack.empty()) {
+            Car returning_car = temp_stack.top();
+            temp_stack.pop();
+            in_stack.push(returning_car);
+        }
+
+        if (!waiting_queue.empty()) {
+            Car next_car = waiting_queue.front();
+            waiting_queue.pop();
+            in_stack.push(next_car);
+            cout << "³µÅÆºÅ " << next_car.license_plate << " µÄ³µÁ¾´Ó±ãµÀÊ»ÈëÍ£³µ³¡" << endl;
+        }
+    }
+
+private:
+    // ¼ÆËã²¢´òÓ¡·ÑÓÃ
+    void calculateAndPrintFee(Car car) {
+        int duration = car.departure_time.hours * 3600 + car.departure_time.minutes * 60 + car.departure_time.seconds -
+            (car.arrival_time.hours * 3600 + car.arrival_time.minutes * 60 + car.arrival_time.seconds);
+        int fee = duration * 10; // ¼ÙÉè·ÑÓÃÊÇÃ¿Ê±¼äµ¥Î»10µ¥Î»
+        cout << "³µÅÆºÅ " << car.license_plate << " µÄ³µÁ¾Í£ÁôÊ±¼äÎª " << Time(duration / 3600, (duration % 3600) / 60, duration % 60)
+            << "£¬Ó¦½É·ÑÓÃÎª " << fee << "Ôª" << endl;
+    }
+};
+
+void printMenu() {
+    cout << "\nÍ£³µ³¡¹ÜÀíÏµÍ³²Ëµ¥\n";
+    cout << "1. ³µÁ¾µ½´ï\n";
+    cout << "2. ³µÁ¾ÀëÈ¥\n";
+    cout << "3. ÍË³ö³ÌÐò\n";
+    cout << "ÇëÑ¡Ôñ²Ù×÷£¨ÊäÈëÏàÓ¦Êý×Ö£©£º";
+}
+
+int main() {
+    ParkingLot parking_lot(5); // Í£³µ³¡ÈÝÁ¿Îª5
+
+    while (true) {
+        printMenu();
+
+        int choice;
+        cin >> choice;
+
+        switch (choice) {
+        case 1: {
+            cout << "ÇëÊäÈë³µÅÆºÅ£º" << endl;
+            string plate;
+            cin >> plate;
+
+            cout << "ÇëÊäÈëµ½´ïÊ±¼ä£¨Ê± ·Ö Ãë£¬¿Õ¸ñ·Ö¸ô£©£º" << endl;
+            int h, m, s;
+            cin >> h >> m >> s;
+
+            parking_lot.arrive(plate, Time(h, m, s));
+            break;
+        }
+        case 2: {
+            cout << "ÇëÊäÈëÀëÈ¥Ê±¼ä£¨Ê± ·Ö Ãë£¬¿Õ¸ñ·Ö¸ô£©£º" << endl;
+            int h, m, s;
+            cin >> h >> m >> s;
+
+            parking_lot.depart(Time(h, m, s));
+            break;
+        }
+        case 3:
+            cout << "³ÌÐòÍË³ö¡£" << endl;
+            return 0;
+        default:
+            cout << "ÎÞÐ§µÄÑ¡Ôñ¡£ÇëÖØÐÂÊäÈë¡£\n";
+        }
+    }
+
+    return 0;
+}
+
+*/
+
+//#include <iostream>
+//#include <stack>
+//#include <queue>
+//
+//using namespace std;
+//
+//class Time {
+//public:
+//    int hours;
+//    int minutes;
+//    int seconds;
+//    Time(){}
+//    Time(int h, int m, int s) : hours(h), minutes(m), seconds(s) {}
+//
+//    friend ostream& operator<<(ostream& out, const Time& time) {
+//        out << time.hours << "Ê±" << time.minutes << "·Ö" << time.seconds << "Ãë";
+//        return out;
+//    }
+//};
+//
+//class Car {
+//public:
+//    string license_plate;
+//    Time arrival_time;
+//    Time departure_time;
+//
+//    Car(string plate, const Time& arrival) : license_plate(plate), arrival_time(arrival) {}
+//};
+//
+//class ParkingLot {
+//private:
+//    int capacity;
+//    stack<Car> in_stack;
+//    stack<Car> temp_stack; // ÓÃÓÚ¸øÒªÀëÈ¥µÄÆû³µÈÃÂ·µÄÁÙÊ±Õ»
+//    queue<Car> waiting_queue;
+//
+//public:
+//    ParkingLot(int n) : capacity(n) {}
+//
+//    // ³µÁ¾µ½´ï
+//    void arrive(string plate, const Time& arrival_time) {
+//        Car new_car(plate, arrival_time);
+//
+//        if (in_stack.size() < capacity) {
+//            in_stack.push(new_car);
+//            cout << "³µÅÆºÅ " << plate << " µÄ³µÁ¾ÔÚÍ£³µ³¡ÄÚµÄÎ»ÖÃÎª " << in_stack.size() << endl;
+//        }
+//        else {
+//            waiting_queue.push(new_car);
+//            cout << "³µÅÆºÅ " << plate << " µÄ³µÁ¾ÔÚ±ãµÀÉÏµÈ´ý" << endl;
+//        }
+//    }
+//
+//    // ³µÁ¾ÀëÈ¥
+//    void depart(const Time& departure_time) {
+//        int position = 0; // ³µÁ¾Î»ÖÃ
+//
+//        while (!in_stack.empty()) {
+//            Car current_car = in_stack.top();
+//            in_stack.pop();
+//            temp_stack.push(current_car);
+//
+//            if (current_car.departure_time.hours == 0 &&
+//                current_car.departure_time.minutes == 0 &&
+//                current_car.departure_time.seconds == 0) {
+//                current_car.departure_time = departure_time;
+//                calculateAndPrintInfo(current_car, position++);
+//            }
+//        }
+//
+//        while (!temp_stack.empty()) {
+//            Car returning_car = temp_stack.top();
+//            temp_stack.pop();
+//            in_stack.push(returning_car);
+//        }
+//
+//        if (!waiting_queue.empty()) {
+//            Car next_car = waiting_queue.front();
+//            waiting_queue.pop();
+//            in_stack.push(next_car);
+//            cout << "³µÅÆºÅ " << next_car.license_plate << " µÄ³µÁ¾´Ó±ãµÀÊ»ÈëÍ£³µ³¡" << endl;
+//        }
+//    }
+//
+//private:
+//    // ¼ÆËã²¢´òÓ¡ÐÅÏ¢
+//    void calculateAndPrintInfo(Car car, int position) {
+//        int duration = car.departure_time.hours * 3600 + car.departure_time.minutes * 60 + car.departure_time.seconds -
+//            (car.arrival_time.hours * 3600 + car.arrival_time.minutes * 60 + car.arrival_time.seconds);
+//        int fee = duration * 10; // ¼ÙÉè·ÑÓÃÊÇÃ¿Ê±¼äµ¥Î»10µ¥Î»
+//        cout << "³µÅÆºÅ " << car.license_plate << " µÄ³µÁ¾ÔÚÍ£³µ³¡ÄÚµÄÎ»ÖÃÎª " << position
+//            << "£¬Í£ÁôÊ±¼äÎª " << Time(duration / 3600, (duration % 3600) / 60, duration % 60)
+//            << "£¬Ó¦½É·ÑÓÃÎª " << fee << "Ôª" << endl;
+//    }
+//};
+//
+//void printMenu() {
+//    cout << "\nÍ£³µ³¡¹ÜÀíÏµÍ³²Ëµ¥\n";
+//    cout << "1. ³µÁ¾µ½´ï\n";
+//    cout << "2. ³µÁ¾ÀëÈ¥\n";
+//    cout << "3. ÍË³ö³ÌÐò\n";
+//    cout << "ÇëÑ¡Ôñ²Ù×÷£¨ÊäÈëÏàÓ¦Êý×Ö£©£º";
+//}
+//
+//int main() {
+//    ParkingLot parking_lot(5); // Í£³µ³¡ÈÝÁ¿Îª5
+//
+//    while (true) {
+//        printMenu();
+//
+//        int choice;
+//        cin >> choice;
+//
+//        switch (choice) {
+//        case 1: {
+//            cout << "ÇëÊäÈë³µÅÆºÅ£º" << endl;
+//            string plate;
+//            cin >> plate;
+//
+//            cout << "ÇëÊäÈëµ½´ïÊ±¼ä£¨Ê± ·Ö Ãë£¬¿Õ¸ñ·Ö¸ô£©£º" << endl;
+//            int h, m, s;
+//            cin >> h >> m >> s;
+//
+//            parking_lot.arrive(plate, Time(h, m, s));
+//            break;
+//        }
+//        case 2: {
+//            cout << "ÇëÊäÈëÀëÈ¥Ê±¼ä£¨Ê± ·Ö Ãë£¬¿Õ¸ñ·Ö¸ô£©£º" << endl;
+//            int h, m, s;
+//            cin >> h >> m >> s;
+//
+//            parking_lot.depart(Time(h, m, s));
+//            break;
+//        }
+//        case 3:
+//            cout << "³ÌÐòÍË³ö¡£" << endl;
+//            return 0;
+//        default:
+//            cout << "ÎÞÐ§µÄÑ¡Ôñ¡£ÇëÖØÐÂÊäÈë¡£\n";
+//        }
+//    }
+//
+//    return 0;
+//}
+#include <iostream>
+#include <stack>
+#include <queue>
 
 using namespace std;
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+class Time {
+public:
+    int hours;
+    int minutes;
+    int seconds;
+    Time()
+    {
+        hours = 0;
+        minutes = 0;
+        seconds = 0;
+    }
+    Time(int h, int m, int s) : hours(h), minutes(m), seconds(s) {}
+
+    friend ostream& operator<<(ostream& out, const Time& time) {
+        out << time.hours << "Ê±" << time.minutes << "·Ö" << time.seconds << "Ãë";
+        return out;
+    }
+};
+
 class Car {
 public:
-    string licensePlate;
-    time_t arrivalTime;
+    string license_plate;
+    Time arrival_time;
+    Time departure_time;
 
-    Car(string plate, time_t time) : licensePlate(plate), arrivalTime(time) {}
+    Car(string plate, const Time& arrival) : license_plate(plate), arrival_time(arrival) {}
 };
 
-// Í£ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½
-class ParkingLotSimulation {
+class ParkingLot {
 private:
     int capacity;
-    stack<Car> parkingLot;
-    queue<Car> waitingQueue;
+    stack<Car> in_stack;
+    stack<Car> temp_stack; // ÓÃÓÚ¸øÒªÀëÈ¥µÄÆû³µÈÃÂ·µÄÁÙÊ±Õ»
+    queue<Car> waiting_queue;
 
 public:
-    ParkingLotSimulation(int capacity) : capacity(capacity) {}
+    ParkingLot(int n) : capacity(n) {}
 
-    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-    void carArrival(const Car& car) {
-        if (parkingLot.size() < static_cast<size_t>(capacity)) {
-            // Í£ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½
-            parkingLot.push(car);
-            cout << "Car " << car.licensePlate << " parked at position " << parkingLot.size() << " in the parking lot." << endl;
+    // ³µÁ¾µ½´ï
+    void arrive(string plate, const Time& arrival_time) {
+        Car new_car(plate, arrival_time);
+
+        if (in_stack.size() < capacity) {
+            in_stack.push(new_car);
+            cout << "³µÅÆºÅ " << plate << " µÄ³µÁ¾ÔÚÍ£³µ³¡ÄÚµÄÎ»ÖÃÎª " << in_stack.size() << endl;
         }
         else {
-            // Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½
-            waitingQueue.push(car);
-            cout << "Car " << car.licensePlate << " arrived and is waiting in the queue." << endl;
+            waiting_queue.push(new_car);
+            cout << "³µÅÆºÅ " << plate << " µÄ³µÁ¾ÔÚ±ãµÀÉÏµÈ´ý" << endl;
         }
     }
 
-    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥
-    void carDeparture(time_t departureTime) {
-        if (!parkingLot.empty()) {
-            // ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ³ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
-            Car departedCar = parkingLot.top();
-            parkingLot.pop();
-            time_t parkingDuration = departureTime - departedCar.arrivalTime;
-            double parkingFee = calculateParkingFee(parkingDuration);
-
-            cout << "Car " << departedCar.licensePlate << " departed from the parking lot." << endl;
-            cout << "Parking duration: " << parkingDuration << " seconds" << endl;
-            cout << "Parking fee: $" << parkingFee << endl;
-
-            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ÐµÈ´ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½
-            if (!waitingQueue.empty()) {
-                Car newArrival = waitingQueue.front();
-                waitingQueue.pop();
-                parkingLot.push(newArrival);
-                cout << "Car " << newArrival.licensePlate << " moved from the waiting queue to the parking lot." << endl;
-            }
-        }
-        else {
-            cout << "Parking lot is empty." << endl;
-        }
-    }
-
-    // ï¿½ï¿½Ó¡Í£ï¿½ï¿½ï¿½ï¿½ï¿½Í±ï¿½ï¿½ï¿½ï¿½×´Ì¬
-    void printStatus() {
-        cout << "\nParking Lot Status:" << endl;
-        int position = 1;
-        stack<Car> tempParkingLot = parkingLot;  // ï¿½ï¿½ï¿½Ú´ï¿½Ó¡×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½Ô­Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-        while (!tempParkingLot.empty()) {
-            Car car = tempParkingLot.top();
-            cout << "Position " << position << ": Car " << car.licensePlate
-                << " (Arrival Time: " << car.arrivalTime << ")" << endl;
-            tempParkingLot.pop();
-            position++;
+    // ³µÁ¾ÀëÈ¥
+    void depart(const Time& departure_time) {
+        if (in_stack.empty()) {
+            cout << "Í£³µ³¡ÒÑÎª¿Õ£¬ÎÞ³µÁ¾ÀëÈ¥¡£" << endl;
+            return;
         }
 
-        cout << "\nWaiting Queue Status:" << endl;
-        position = 1;
-        queue<Car> tempWaitingQueue = waitingQueue;  // ï¿½ï¿½ï¿½Ú´ï¿½Ó¡×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-        while (!tempWaitingQueue.empty()) {
-            Car car = tempWaitingQueue.front();
-            cout << "Position " << position << ": Car " << car.licensePlate
-                << " (Arrival Time: " << car.arrivalTime << ")" << endl;
-            tempWaitingQueue.pop();
-            position++;
+        Car leaving_car = in_stack.top();
+        in_stack.pop();
+
+        if (!waiting_queue.empty()) {
+            Car next_car = waiting_queue.front();
+            waiting_queue.pop();
+            in_stack.push(next_car);
+            cout << "³µÅÆºÅ " << next_car.license_plate << " µÄ³µÁ¾´Ó±ãµÀÊ»ÈëÍ£³µ³¡" << endl;
         }
+
+        leaving_car.departure_time = departure_time;
+        calculateAndPrintInfo(leaving_car);
+
+
     }
 
 private:
-    // ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½Ê¾ï¿½ï¿½ï¿½Ð¼òµ¥¼ï¿½ï¿½ã£©
-    double calculateParkingFee(time_t duration) {
-        // ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª0.1ï¿½ï¿½Ôª
-        const double rate = 0.1;
-        return rate * duration;
+    // ¼ÆËã²¢´òÓ¡ÐÅÏ¢
+    void calculateAndPrintInfo(Car car) {
+        long long duration = car.departure_time.hours * 3600 + car.departure_time.minutes * 60 + car.departure_time.seconds -
+            (car.arrival_time.hours * 3600 + car.arrival_time.minutes * 60 + car.arrival_time.seconds);
+        double fee = duration * 0.01; // ¼ÙÉè·ÑÓÃÊÇÃ¿Ê±¼äµ¥Î»10µ¥Î»
+        cout << "³µÅÆºÅ " << car.license_plate << " µÄ³µÁ¾ÔÚÍ£³µ³¡ÄÚµÄÎ»ÖÃÎª " << in_stack.size() << "£¬Í£ÁôÊ±¼äÎª "
+            << Time(duration / 3600, (duration % 3600) / 60, duration % 60) << "£¬Ó¦½É·ÑÓÃÎª " << fee << "Ôª" << endl;
     }
 };
 
+void printMenu() {
+    cout << "-------------------------\n";
+    cout << "-----Í£³µ³¡¹ÜÀíÏµÍ³----\n";
+    cout << "------1. ³µÁ¾µ½´ï-------\n";
+    cout << "------2. ³µÁ¾ÀëÈ¥-------\n";
+    cout << "------3. ÍË³ö³ÌÐò-------\n";
+    cout << "------ÇëÑ¡Ôñ²Ù×÷£º-----\n";
+    cout << "-------------------------\n";
+}
+
 int main() {
-    // Ê¾ï¿½ï¿½ï¿½Ã·ï¿½
-    const int parkingLotCapacity = 5;
-    ParkingLotSimulation simulation(parkingLotCapacity);
+    ParkingLot parking_lot(2); // Í£³µ³¡ÈÝÁ¿Îª5
 
-    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½
-    time_t currentTime = time(nullptr);
-    simulation.carArrival(Car("ABC123", currentTime));
-    simulation.carArrival(Car("XYZ789", currentTime + 60));
+    while (true) {
+        printMenu();
 
-    // ï¿½ï¿½Ó¡ï¿½ï¿½Ç°×´Ì¬
-    simulation.printStatus();
+        int choice;
+        cin >> choice;
 
-    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½È¥
-    simulation.carDeparture(currentTime + 120);
+        switch (choice) {
+        case 1: {
+            cout << "ÇëÊäÈë³µÅÆºÅ£º" << endl;
+            string plate;
+            cin >> plate;
 
-    // ï¿½ï¿½Ó¡ï¿½ï¿½Ç°×´Ì¬
-    simulation.printStatus();
-    getchar();
+            cout << "ÇëÊäÈëµ½´ïÊ±¼ä£¨Ê± ·Ö Ãë£¬¿Õ¸ñ·Ö¸ô£©£º" << endl;
+            int h, m, s;
+            cin >> h >> m >> s;
+
+            parking_lot.arrive(plate, Time(h, m, s));
+            break;
+        }
+        case 2: {
+            cout << "ÇëÊäÈëÀëÈ¥Ê±¼ä£¨Ê± ·Ö Ãë£¬¿Õ¸ñ·Ö¸ô£©£º" << endl;
+            int h, m, s;
+            cin >> h >> m >> s;
+
+            parking_lot.depart(Time(h, m, s));
+            break;
+        }
+        case 3:
+            cout << "³ÌÐòÍË³ö¡£" << endl;
+            return 0;
+        default:
+            cout << "ÇëÖØÐÂÊäÈë¡£\n";
+        }
+    }
+
     return 0;
 }
