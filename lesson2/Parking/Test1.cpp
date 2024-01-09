@@ -315,19 +315,22 @@ public:
 
 class Car {
 public:
-    string license_plate;
-    Time arrival_time;
-    Time departure_time;
+    string license_plate;//牌照号码
+    Time arrival_time;//到达时刻
+    Time departure_time;//离开时刻
 
-    Car(string plate, const Time& arrival) : license_plate(plate), arrival_time(arrival) {}
+    Car(string plate, const Time& arrival) :
+        license_plate(plate), 
+        arrival_time(arrival) 
+    {}
 };
 
 class ParkingLot {
 private:
     int capacity;
-    stack<Car> in_stack;
+    stack<Car> in_stack;//停车场栈
     stack<Car> temp_stack; // 用于给要离去的汽车让路的临时栈
-    queue<Car> waiting_queue;
+    queue<Car> waiting_queue;//便道队列
 
 public:
     ParkingLot(int n) : capacity(n) {}
@@ -341,7 +344,7 @@ public:
             cout << "车牌号 " << plate << " 的车辆在停车场内的位置为 " << in_stack.size() << endl;
         }
         else {
-            waiting_queue.push(new_car);
+            waiting_queue.push(new_car);//若停车场已停满，在便道等候
             cout << "车牌号 " << plate << " 的车辆在便道上等待" << endl;
         }
     }
@@ -352,35 +355,39 @@ public:
             cout << "停车场已为空，无车辆离去。" << endl;
             return;
         }
-
-        Car leaving_car = in_stack.top();
-        in_stack.pop();
-
         if (!waiting_queue.empty()) {
             Car next_car = waiting_queue.front();
             waiting_queue.pop();
-            in_stack.push(next_car);
+            temp_stack.push(next_car);//车辆进入临时停车场
+            Car leaving_car = in_stack.top();
+            in_stack.pop(); //停车场内车辆离开
+            in_stack.push(next_car); 
+            temp_stack.pop();
             cout << "车牌号 " << next_car.license_plate << " 的车辆从便道驶入停车场" << endl;
+            leaving_car.departure_time = departure_time;
+            calculateAndPrint(leaving_car);
         }
-
-        leaving_car.departure_time = departure_time;
-        calculateAndPrintInfo(leaving_car);
-
-
+        else
+        {
+            Car leaving_car = in_stack.top();
+            in_stack.pop();
+            leaving_car.departure_time = departure_time;
+            calculateAndPrint(leaving_car);
+        }
     }
 
 private:
     // 计算并打印信息
-    void calculateAndPrintInfo(Car car) {
+    void calculateAndPrint(Car car) {
         long long duration = car.departure_time.hours * 3600 + car.departure_time.minutes * 60 + car.departure_time.seconds -
             (car.arrival_time.hours * 3600 + car.arrival_time.minutes * 60 + car.arrival_time.seconds);
-        double fee = duration * 0.01; // 假设费用是每时间单位10单位
+        double fee = duration * 0.001; // 假设费用是每分钟0.06元
         cout << "车牌号 " << car.license_plate << " 的车辆在停车场内的位置为 " << in_stack.size() << "，停留时间为 "
             << Time(duration / 3600, (duration % 3600) / 60, duration % 60) << "，应缴费用为 " << fee << "元" << endl;
     }
 };
 
-void printMenu() {
+void Menu() {
     cout << "-------------------------\n";
     cout << "-----停车场管理系统----\n";
     cout << "------1. 车辆到达-------\n";
@@ -391,11 +398,9 @@ void printMenu() {
 }
 
 int main() {
-    ParkingLot parking_lot(2); // 停车场容量为5
-
+    ParkingLot parking_lot(3); // 停车场容量为3
     while (true) {
-        printMenu();
-
+        Menu();
         int choice;
         cin >> choice;
 
@@ -405,15 +410,14 @@ int main() {
             string plate;
             cin >> plate;
 
-            cout << "请输入到达时间（时 分 秒，空格分隔）：" << endl;
+            cout << "请输入到达时间：" << endl;
             int h, m, s;
             cin >> h >> m >> s;
-
             parking_lot.arrive(plate, Time(h, m, s));
             break;
         }
         case 2: {
-            cout << "请输入离去时间（时 分 秒，空格分隔）：" << endl;
+            cout << "请输入离去时间：" << endl;
             int h, m, s;
             cin >> h >> m >> s;
 
