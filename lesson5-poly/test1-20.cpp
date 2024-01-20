@@ -20,7 +20,7 @@ public:
     }
 
 };
-void call(Person& it)//通过基类（父类）的指针或引用调用虚函数
+void call(Person& it)//2、通过基类（父类）的指针或引用调用虚函数
 {
     it.max();
 }
