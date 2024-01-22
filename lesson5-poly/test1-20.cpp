@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+
+
 //多态
 class Person
 {
