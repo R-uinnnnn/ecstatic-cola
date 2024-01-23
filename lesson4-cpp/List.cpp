@@ -3,7 +3,22 @@
 using namespace std;
 #include "List.h"
 
+void test2()
+{
+    list<int> lt;
+    lt.push_back(1);
+    lt.push_back(21);
+    lt.push_back(13);
+    lt.push_back(14);
+    lt.push_back(19);
+    list<int>:: iterator it=lt.begin();
+    for(int i=0;i<lt.size();i++)
+    {
+        cout<<*it<<endl;
+        ++it;
+    }
 
+}
 int main()
 {
     /*
@@ -22,7 +37,8 @@ int main()
         ++it;
     }
     */
-    annn::test1();
+    //annn::test1();
+    test2();
     getchar();
     return 0;
 }
