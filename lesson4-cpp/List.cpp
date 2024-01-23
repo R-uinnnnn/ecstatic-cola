@@ -12,7 +12,7 @@ void test2()
     lt.push_back(14);
     lt.push_back(19);
     list<int>:: iterator it=lt.begin();
-    for(int i=0;i<lt.size();i++)
+    for(size_t i=0;i<lt.size();i++)
     {
         cout<<*it<<endl;
         ++it;
@@ -37,8 +37,8 @@ int main()
         ++it;
     }
     */
-    //annn::test1();
-    test2();
+    annn::test1();
+    //test2();
     getchar();
     return 0;
 }

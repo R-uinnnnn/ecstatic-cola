@@ -1,5 +1,5 @@
 #pragma once
-
+#include <cassert>
 /*
 namespace annn
 {
@@ -233,29 +233,31 @@ namespace annn
 
         dst operator++()
         {
-            ++(node->_data);
+            node=node->next;
             return *this;
         }
+        /*
         dst operator++(T)
         {
             List_iterator tmp(*this);
             ++(node->_data);
             return tmp;
         }
+        */
         dst operator--()
         {
-            --(node->_data);
+            node=node->prev;
             return *this;
         }
         dst operator--(T)
         {
             List_iterator tmp(*this);
-            --(node->_data);
+            node=node->prev;
             return tmp;
         }
         bool operator!=(const iterator& it)
         {
-            return node == it.node;
+            return !(node == it.node);
         }
         Node<T>* node;
 
@@ -273,12 +275,20 @@ namespace annn
         List()
         {
             node = new Node<T>();//只有带上参数，模板实例化了才是类型；Node<T>才是类型，Node只是类名
-            node->next = node->prev = nullptr;
+            node->next = node->prev = node;
             //建立头结点(哨兵卫)
         }
         ~List()
         {
+
             //实现
+            iterator it=begin();
+            while(it!=end())
+            {
+                it=erase(it);
+            }
+            delete node;
+            node=nullptr;
         }
         iterator begin()
         {
@@ -305,7 +315,20 @@ namespace annn
             newnode->next = cur;
             cur->prev = newnode;
         }
+        iterator erase(iterator pos)
+		{
+			assert(pos != end());
 
+			Node<T>* cur = pos.node;
+			Node<T>* _prev = cur->prev;
+			Node<T>* _next = cur->next;
+
+			_prev->next = _next;
+			_next->prev = _prev;
+
+			delete cur;
+            return _next;
+        }
     public:
         Node<T>* node;
     };
@@ -326,6 +349,7 @@ namespace annn
         while (it != lt1.end())
         {
             cout << *it << " ";
+            ++it;
         }
 
     }
