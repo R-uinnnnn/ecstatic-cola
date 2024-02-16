@@ -17,7 +17,6 @@ void test2()
         cout<<*it<<endl;
         ++it;
     }
-
 }
 int main()
 {
