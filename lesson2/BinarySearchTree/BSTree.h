@@ -40,7 +40,7 @@ public:
 	BSTreeNode<T>* begin()
 	{
 		return _root;
-	}
+	} 
 	BSTreeNode<T>* end()
 	{
 		return _root->right;
