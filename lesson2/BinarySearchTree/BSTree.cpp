@@ -41,6 +41,7 @@ void test1()
 	//cout << endl;
 }
 
+
 int main()
 {
 	test1();
