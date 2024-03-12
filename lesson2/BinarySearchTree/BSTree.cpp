@@ -7,10 +7,11 @@ void test1()
 	BSTree<int> n1;
 	n1.Insert(8);
 	n1.Insert(3);
-	
+
 	n1.Insert(10);
 	n1.Insert(1);
 	n1.Insert(6);
+	
 	n1.Insert(4);
 	n1.Insert(7);
 	n1.Insert(14);
