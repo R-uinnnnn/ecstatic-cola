@@ -9,6 +9,7 @@ void test1()
 	n1.Insert(3);
 
 	n1.Insert(10);
+	
 	n1.Insert(1);
 	n1.Insert(6);
 	
