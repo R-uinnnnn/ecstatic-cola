@@ -9,13 +9,14 @@ void test1()
 	n1.Insert(3);
 
 	n1.Insert(10);
-	
+	        
 	n1.Insert(1);
 	n1.Insert(6);
 	
 	n1.Insert(4);
 	n1.Insert(7);
 	n1.Insert(14);
+	
 	n1.Insert(13);
 	n1.InOrder(n1._root);
 	cout << endl;
