@@ -27,6 +27,11 @@ template<class K,class T>
 struct RBTree
 {
     typedef struct RBNode Node;
+    RBTree()
+    :_data(nullptr)
+    {
+
+    }
     RBTree(T data)
     :_data(data)
     {
