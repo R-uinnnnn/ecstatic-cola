@@ -31,6 +31,7 @@ struct RBTree
     :_data(nullptr)
     {
 
+
     }
     RBTree(T data)
     :_data(data)
