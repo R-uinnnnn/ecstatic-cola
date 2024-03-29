@@ -29,6 +29,7 @@ struct RBTree
     typedef struct RBNode Node;
     RBTree()
     :_data(nullptr)
+    
     {
 
 
