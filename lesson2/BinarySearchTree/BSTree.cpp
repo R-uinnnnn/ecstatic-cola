@@ -62,25 +62,25 @@ void test2()
 		++it;
 	}
 }
-int main()
-{
-	/*
-	map<int,string> m;
-	pair<int,string> p(2,"apple");
-	m.insert(p);
-	m.insert(pair<int,string>(1,"watermalen"));//匿名对象
-	m.insert(make_pair(5,"banana"));//函数调用 c++98
-	m.insert({7,"strawberry"});//多参数的隐式类型转换 C++11
-	map<int,string>::iterator it=m.begin();
-	while(it!=m.end())
-	{
-		cout<<it->first<<" "<<it->second<<endl;
-		++it;
-	}*/
-	test2();
-	getchar();
-	//test1();
-	
-	return 0;
-	
-}
+//int main()
+//{
+//	/*
+//	map<int,string> m;
+//	pair<int,string> p(2,"apple");
+//	m.insert(p);
+//	m.insert(pair<int,string>(1,"watermalen"));//匿名对象
+//	m.insert(make_pair(5,"banana"));//函数调用 c++98
+//	m.insert({7,"strawberry"});//多参数的隐式类型转换 C++11
+//	map<int,string>::iterator it=m.begin();
+//	while(it!=m.end())
+//	{
+//		cout<<it->first<<" "<<it->second<<endl;
+//		++it;
+//	}*/
+//	test2();
+//	getchar();
+//	//test1();
+//	
+//	return 0;
+//	
+//}
