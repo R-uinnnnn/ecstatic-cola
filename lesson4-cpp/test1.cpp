@@ -40,6 +40,7 @@ int search_bin(int arr[],int key,int sz)
 			printf("找到了，下标为：%d\n", mid);
 			break;
 		}
+		
 	}
 	if (left > right)
 	{
