@@ -42,6 +42,8 @@ int search_bin(int arr[],int key,int sz)
 		}
 		
 		
+
+		
 	}
 	if (left > right)
 	{
