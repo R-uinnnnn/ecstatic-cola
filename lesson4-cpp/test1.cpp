@@ -41,9 +41,6 @@ int search_bin(int arr[],int key,int sz)
 			break;
 		}
 		
-		
-
-		
 	}
 	if (left > right)
 	{
