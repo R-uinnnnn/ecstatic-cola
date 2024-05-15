@@ -55,9 +55,13 @@ int search_bin(int arr[],int key,int sz)
 }
 int main()
 {
-    int arr[8]={1,3,5,7,8,9,10,15};
+	/*    
+	int arr[8]={1,3,5,7,8,9,10,15};
     int sz = sizeof(arr) / sizeof(arr[0]);
-    search_bin(arr,7,sz);
+    search_bin(arr,7,sz);*/
+	int t=0;
+	int target=-t;
+	cout<<target;
     getchar();
 
     return 0;
