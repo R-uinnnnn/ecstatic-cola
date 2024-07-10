@@ -69,6 +69,8 @@ int main()
 }
 */
 
+
+/*
 #include<iostream>
 using namespace std;
 char X[100];
@@ -139,4 +141,7 @@ int main(void)
 	cout<<endl;
 	return 0;
 }
+*/
+
+
 
