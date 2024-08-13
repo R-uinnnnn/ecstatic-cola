@@ -1,6 +1,7 @@
 #include <vector>
 
 using namespace std;
+
 enum state
 {
     EMPTY,
