@@ -32,4 +32,7 @@ public:
 private:
     vector<HASHDATE<k,v>> _table;
     size_t n;
+
+
+
 };
